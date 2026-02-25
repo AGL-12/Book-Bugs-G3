@@ -1,0 +1,372 @@
+* {
+  box-sizing: border-box;
+}
+
+@property --colorin {}
+
+body {
+  overflow-x: hidden;
+  margin: 0;
+  background-color: antiquewhite;
+  padding-bottom: 200px;
+}
+
+section.cds {
+  width: 80%;
+  max-height: auto;
+  overflow: auto;
+  /* Oculta cualquier contenido que se salga del límite */
+  position: relative;
+  border: 2px solid #ccc;
+}
+
+/* Contenedor de los cards */
+.carousel-container {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.3s ease;
+  /* Transición para el movimiento */
+  width: 100vw;
+}
+
+/* Estilo de cada card */
+.card {
+  width: 150px;
+  height: 150px;
+  background-color: #3498db;
+  margin: 0 10px;
+  display: inline-block;
+  border-radius: 8px;
+  color: white;
+  text-align: center;
+  line-height: 150px;
+  font-size: 20px;
+}
+
+/* Botones para mover el carrusel */
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+#palacal {
+  display: flex;
+  place-content: center;
+  margin: 10px 0;
+}
+
+#calculator {
+  width: 250px;
+  background-color: #eefad9;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19);
+}
+
+#display {
+  width: 100%;
+  height: 56px;
+  font-size: 20px;
+  text-align: right;
+  margin-left: 10px;
+  padding: 20px;
+  border-radius: 5px;
+  color: #e0e1dd;
+  background-color: rgba(42, 35, 13, 0.3);
+  border: none;
+  box-sizing: border-box;
+}
+
+.operator {
+  color: #219ebc;
+}
+
+#ac {
+  color: #bf4d5d;
+}
+
+.equal {
+  width: calc(50% - 10px);
+}
+
+button {
+  width: calc(25% - 10px);
+  height: 50px;
+  font-size: 20px;
+  margin: 10px 5px;
+  border: none;
+  border-radius: 5px;
+  float: left;
+  background-color: rgb(174, 174, 174);
+  color: #e0e1dd;
+  -webkit-box-shadow: -1px 1px 30px -5px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: -1px 1px 30px -5px rgba(0, 0, 0, 0.2);
+  box-shadow: -1px 1px 30px -5px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(1.05);
+  box-shadow: 0 5px 4px 1px rgba(0, 0, 0, 0.19),
+    0 1.5px rgba(0, 0, 0, 0.23);
+}
+
+h2 {
+  font-size: 25px;
+  width: auto;
+  height: 30px;
+}
+
+#wow {
+  background-color: black;
+  border: 2px solid black;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+#wow:hover {
+  animation: rainbow 1s linear infinite;
+}
+
+@keyframes rainbow {
+  0% {
+    background-color: white;
+    border-color: white;
+  }
+
+  20% {
+    background-color: aqua;
+    border-color: aqua;
+  }
+
+  40% {
+    background-color: red;
+    border-color: red;
+  }
+
+  60% {
+    background-color: green;
+    border-color: green;
+  }
+
+  80% {
+    background-color: purple;
+    border-color: purple;
+  }
+
+  100% {
+    background-color: violet;
+    border-color: violet;
+  }
+}
+
+.load {
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: 2px solid red;
+  border-left: 2px solid cyan;
+  border-radius: 50%;
+  animation: rotating 1s linear infinite;
+}
+
+@keyframes rotating {
+  from {
+    rotate: 0deg;
+  }
+
+  to {
+    rotate: 360deg;
+  }
+}
+
+h2 {
+  text-align: center;
+}
+
+p {
+  width: 80vw;
+  min-width: 20vh;
+  text-align: center;
+  margin: 0;
+}
+
+h1 {
+  text-align: center;
+  margin: 0;
+  margin-left: 8px;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 10;
+
+  animation: exaltar linear both;
+  animation-timeline: scroll(root block);
+  animation-range: 0 200px;
+}
+
+article {
+  columns: 2;
+  padding: 16px 32px;
+  column-gap: 32px;
+}
+
+article img {
+  border-radius: 5px;
+  width: 350px;
+  height: auto;
+  animation: fotos linear both;
+  animation-timeline: view();
+  animation-range: entry 20% cover 30%;
+}
+
+footer {
+  width: 100%;
+}
+
+main {
+  display: grid;
+  place-content: center;
+  place-items: center;
+  padding: 20px;
+}
+
+.rola {
+  position: fixed;
+  top: 0;
+  width: 8px;
+  height: 0%;
+  background-color: red;
+  animation: rodando auto linear;
+  animation-timeline: scroll(root block);
+}
+
+.pulser,
+.solo {
+  width: 50px;
+  height: 50px;
+  background: cyan;
+  border-radius: 50%;
+  position: relative;
+  transition-duration: 1s;
+}
+
+.solo {
+  animation: move alternate infinite linear;
+  animation-duration: 1s;
+  justify-self: center;
+}
+
+.pulser {
+  opacity: 0;
+}
+
+.solo:hover {
+  width: 100px;
+  height: 100px;
+  background: red;
+  box-shadow: 0 0 10px red;
+}
+
+.cosas {
+  background-color: grey;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  animation: fuera 3s ease both;
+}
+
+@keyframes fuera {
+  from {
+    translate: 100vw 0;
+  }
+
+  to {
+    translate: 0 0;
+  }
+}
+
+.cosas:hover .pulser {
+  opacity: 1;
+}
+
+.pulser:first-child {
+  transition-delay: 0ms;
+}
+
+.pulser:nth-child(2) {
+  transition-delay: 300ms;
+}
+
+.pulser:nth-child(3) {
+  transition-delay: 600ms;
+}
+
+@keyframes exaltar {
+  to {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(5px);
+    font-size: 15px;
+    color: grey;
+  }
+}
+
+@keyframes fotos {
+  from {
+    opacity: 0;
+    translate: 0 100px;
+    scale: 0.5;
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+    scale: 1;
+  }
+}
+
+@keyframes move {
+  from {
+    transform: translateY(0px);
+  }
+
+  to {
+    transform: translateY(100px);
+  }
+}
+
+@keyframes rodando {
+  from {
+    height: 0%;
+  }
+
+  to {
+    height: 100%;
+  }
+}
+
+@media (width<=500) {
+  article {
+    columns: 1
+  }
+}
