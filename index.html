@@ -1,159 +1,599 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <link type="text/css" rel="stylesheet" href="style.css"/>
-  </head>
-  <body>
-    <div class="rola"></div>
-<h1 id="p1">Ole</h1>
-<main>
-    <section class="cds">
-        <button class="prev" onclick="moveCarousel(-1)">&#10094;</button> <!-- Botón izquierdo -->
-        <div class="carousel-container">
-            <div class="card">Card 1</div>
-            <div class="card">Card 2</div>
-            <div class="card">Card 3</div>
-            <div class="card">Card 4</div>
-            <div class="card">Card 5</div>
-            <div class="card">Card 6</div>
-            <!-- Puedes agregar más cards aquí -->
-        </div>
-        <button class="next" onclick="moveCarousel(1)">&#10095;</button> <!-- Botón derecho -->
-    </section>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Memoria del Proyecto Book &amp; Bugs — Aplicación multiplataforma de gestión de librería. PDAM 2025-26." />
+  <title>Book &amp; Bugs — Memoria del Proyecto PDAM</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Favicon inline -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>" />
+</head>
+<body>
 
-    <section>
-        <div>
-            <h2 id="wow">Bienvenido a la Animación de Scroll</h2>
-            <p>Este es un ejemplo de cómo puedes hacer que los elementos se deslicen y aparezcan al hacer scroll
-                hacia abajo en la página.
-                Este es un ejemplo de cómo puedes hacer que los elementos se deslicen y aparezcan al hacer scroll
-                hacia abajo en la página.
-                Este es un ejemplo de cómo puedes hacer que los elementos se deslicen y aparezcan al hacer scroll
-                hacia abajo en la página.</p>
+  <!-- ============================================================
+       HEADER — Sticky Nav Bar con efecto blur
+       ============================================================ -->
+  <header id="main-header">
+    <nav class="nav-inner" aria-label="Navegación principal">
+
+      <!-- Izquierda: Brand / Logo -->
+      <a href="#inicio" class="nav-brand" aria-label="Ir al inicio">
+        <div class="logo-placeholder" aria-hidden="true">B</div>
+        <span class="brand-text">Book &amp; Bugs</span>
+      </a>
+
+      <!-- Centro: Navegación — según Quedebecontenerheader.png -->
+      <ul class="nav-links" role="list">
+        <li><a href="#inicio"     class="nav-link active">Inicio</a></li>
+        <li><a href="#nosotros"   class="nav-link">Nosotros</a></li>
+        <li><a href="#contexto"   class="nav-link">Origen y contextualización</a></li>
+        <li><a href="#objetivos"  class="nav-link">Objetivos</a></li>
+        <li><a href="#cronograma" class="nav-link">Tareas y Cronograma</a></li>
+        <li><a href="#recursos"   class="nav-link">Recursos</a></li>
+        <li><a href="#presupuesto"class="nav-link">Presupuesto</a></li>
+        <li><a href="#seguimiento"class="nav-link">Seguimiento y Evaluación</a></li>
+      </ul>
+
+      <!-- Derecha: CTA GitHub -->
+      <a href="https://github.com" target="_blank" rel="noopener" class="nav-cta" id="btn-github">
+        <!-- GitHub SVG icon -->
+        <svg viewBox="0 0 16 16" aria-hidden="true">
+          <path d="M8 0a8 8 0 0 0-2.53 15.59c.4.07.55-.17.55-.38v-1.33C3.73 14.37 3.26 13 3.26 13A2.21 2.21 0 0 0 2.34 11.7c-.76-.52.06-.51.06-.51a1.75 1.75 0 0 1 1.28.86 1.77 1.77 0 0 0 2.42.69 1.78 1.78 0 0 1 .53-1.11C4.57 11.41 2.9 10.8 2.9 7.86A3.08 3.08 0 0 1 3.72 5.7a2.92 2.92 0 0 1 .08-2.19s.66-.21 2.17.81a7.42 7.42 0 0 1 3.95 0c1.51-1.02 2.17-.81 2.17-.81a2.92 2.92 0 0 1 .08 2.19 3.08 3.08 0 0 1 .82 2.16c0 3-.18 3.55-3.88 3.73a2 2 0 0 1 .57 1.55V15.6c0 .23.14.46.55.38A8 8 0 0 0 8 0z"/>
+        </svg>
+        Ver Repositorio
+      </a>
+
+      <!-- Menú hamburguesa (mobile) -->
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Mobile Menu -->
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Menú móvil" role="navigation">
+    <a href="#inicio"     class="mob-link">Inicio</a>
+    <a href="#nosotros"   class="mob-link">Nosotros</a>
+    <a href="#contexto"   class="mob-link">Origen y contextualización</a>
+    <a href="#objetivos"  class="mob-link">Objetivos</a>
+    <a href="#cronograma" class="mob-link">Tareas y Cronograma</a>
+    <a href="#recursos"   class="mob-link">Recursos</a>
+    <a href="#presupuesto" class="mob-link">Presupuesto</a>
+    <a href="#seguimiento" class="mob-link">Seguimiento y Evaluación</a>
+    <a href="https://github.com" target="_blank" rel="noopener" class="mob-link">Ver Repositorio →</a>
+  </nav>
+
+  <!-- ============================================================
+       MAIN CONTENT
+       ============================================================ -->
+  <main>
+
+    <!-- ══════════════════════════════════════
+         SECCIÓN 1 — INICIO / HERO
+         ══════════════════════════════════════ -->
+    <section id="inicio" aria-labelledby="hero-heading">
+      <div class="hero-inner">
+
+        <!-- Texto principal -->
+        <div class="hero-content reveal">
+          <span class="hero-badge">📚 Proyecto PDAM 2025 – 26</span>
+          <h1 class="hero-title" id="hero-heading">
+            <span class="highlight">Book &amp; Bugs</span><br>
+            Gestión Inteligente<br>de Librerías
+          </h1>
+          <p class="hero-desc">
+            Solución integral para la digitalización de pequeñas y medianas librerías.
+            Aplicación de escritorio JavaFX con Hibernate, JasperReports y pruebas
+            automatizadas con TestFX &amp; JUnit.
+          </p>
+          <div class="hero-btns">
+            <a href="#contexto" class="btn-primary">📖 Explorar Proyecto</a>
+            <a href="#cronograma" class="btn-secondary">📅 Ver Planificación</a>
+          </div>
         </div>
-        <section id="palacal">
-            <div id="calculator">
-                <input type="text" id="display" disabled>
-                <br />
-                <button id="ac" class="operator">AC</button>
-                <button id="de" class="operator">DE</button>
-                <button id="." class="operator">.</button>
-                <button id="/" class="operator">/</button>
-                <br />
-                <button id="7">7</button>
-                <button id="8">8</button>
-                <button id="9">9</button>
-                <button id="*" class="operator">*</button>
-                <br />
-                <button id="4">4</button>
-                <button id="5">5</button>
-                <button id="6">6</button>
-                <button id="-" class="operator">-</button>
-                <br />
-                <button id="1">1</button>
-                <button id="2">2</button>
-                <button id="3">3</button>
-                <button id="+" class="operator">+</button>
-                <br />
-                <button id="00">00</button>
-                <button id="0">0</button>
-                <button id="=" class="equal operator">=</button>
+
+        <!-- Cards técnicas -->
+        <div class="hero-visual reveal" style="animation-delay:.2s">
+          <div class="tech-card">
+            <div class="tech-icon" style="background:linear-gradient(135deg,#FF6B35,#FF8C61)">☕</div>
+            <div>
+              <h4>JavaFX + Hibernate 5.2</h4>
+              <p>Interfaz gráfica y persistencia robusta con pool C3P0</p>
             </div>
-        </section>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon" style="background:linear-gradient(135deg,#5084C1,#789DE5)">🗄️</div>
+            <div>
+              <h4>MySQL + JPA</h4>
+              <p>Base de datos relacional con entidades mapeadas JPA</p>
+            </div>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon" style="background:linear-gradient(135deg,#27AE60,#2ECC71)">🧪</div>
+            <div>
+              <h4>TestFX + JUnit 4</h4>
+              <p>Pruebas automatizadas de interfaz gráfica y unitarias</p>
+            </div>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon" style="background:linear-gradient(135deg,#D4A017,#F0C040)">📊</div>
+            <div>
+              <h4>JasperReports</h4>
+              <p>Generación de facturas y listados exportables en PDF</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </section>
 
-    <section>
-        <div>
-            <h2 id="titulo">Bienvenido a la Animación de Scroll</h2>
-            <p>Este es un ejemplo de cómo puedes hacer que los elementos se deslicen y aparezcan al hacer scroll
-                hacia abajo en la página.
-                Este es un ejemplo de cómo puedes hacer que los elementos se deslicen y aparezcan al hacer scroll
-                hacia abajo en la página.
-                Este es un ejemplo de cómo puedes hacer que los elementos se deslicen y aparezcan al hacer scroll
-                hacia abajo en la página.</p>
+    <!-- ══════════════════════════════════════
+         SECCIÓN — NOSOTROS
+         ══════════════════════════════════════ -->
+    <section id="nosotros" aria-labelledby="nosotros-heading">
+      <div class="container">
+        <div class="reveal">
+          <div class="title-accent"></div>
+          <h2 class="section-title" id="nosotros-heading">Nuestro Equipo</h2>
+          <p class="section-subtitle">Desarrolladores del proyecto Book &amp; Bugs — PDAM 2025-26</p>
         </div>
+        <div class="team-grid reveal">
+          <div class="team-card">
+            <div class="avatar" style="background:linear-gradient(135deg,#5084C1,#789DE5)">M</div>
+            <h3>Mikel</h3>
+            <p class="role">Desarrollador Full-Stack</p>
+            <p class="role" style="margin-top:.3rem;font-size:.75rem">JavaFX · Hibernate · MySQL</p>
+          </div>
+          <div class="team-card">
+            <div class="avatar" style="background:linear-gradient(135deg,#D4A017,#F0C040)">📚</div>
+            <h3>Book &amp; Bugs</h3>
+            <p class="role">Aplicación Desktop</p>
+            <p class="role" style="margin-top:.3rem;font-size:.75rem">Gestión de Librería Integral</p>
+          </div>
+          <div class="team-card">
+            <div class="avatar" style="background:linear-gradient(135deg,#27AE60,#2ECC71)">🎓</div>
+            <h3>PDAM 2025-26</h3>
+            <p class="role">Proyecto de Reto 2</p>
+            <p class="role" style="margin-top:.3rem;font-size:.75rem">Grado Superior · Desarrollo</p>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section>
-        <div>
-            <h2>Sección 2</h2>
-            <h2>Bienvenido a la Animación de Scroll</h2>
-            <p>Este es un ejemplo de cómo puedes hacer que los elementos se deslicen y aparezcan al hacer scroll
-                hacia abajo en la página.
-                Este es un ejemplo de cómo puedes hacer que los elementos se deslicen y aparezcan al hacer scroll
-                hacia abajo en la página.
-                Este es un ejemplo de cómo puedes hacer que los elementos se deslicen y aparezcan al hacer scroll
-                hacia abajo en la página.</p>
+    <!-- ══════════════════════════════════════
+         SECCIÓN 2 — ORIGEN Y CONTEXTUALIZACIÓN
+         ══════════════════════════════════════ -->
+    <section id="contexto" aria-labelledby="contexto-heading">
+      <div class="container">
+        <div class="reveal">
+          <div class="title-accent"></div>
+          <h2 class="section-title" id="contexto-heading">Origen y Contextualización</h2>
+          <p class="section-subtitle">Nacimiento e impacto del proyecto en el sector editorial</p>
         </div>
+
+        <div class="context-grid">
+          <div class="context-text reveal">
+            <h3>¿Por qué Book &amp; Bugs?</h3>
+            <p>
+              El proyecto <strong>Book &amp; Bugs</strong> surge como una solución integral para la
+              digitalización de pequeñas y medianas librerías. Esta aplicación de escritorio permite a
+              los administradores controlar el catálogo de libros, usuarios y pedidos en tiempo real,
+              mientras ofrece a los clientes una experiencia de compra fluida e interactiva.
+            </p>
+            <p>
+              Desarrollada íntegramente en Java con JavaFX para la interfaz gráfica e Hibernate 5.2
+              como capa de persistencia, la aplicación demuestra un dominio técnico completo del
+              stack académico de PDAM.
+            </p>
+
+            <!-- Placeholder para imagen de la aplicación -->
+            <!-- ▼ SUSTITUYE ESTE BLOQUE POR TU CAPTURA DE PANTALLA ▼ -->
+            <div class="img-placeholder" title="Clic para sustituir por tu imagen de la app">
+              <span>🖥️</span>
+              <span>Captura principal de la aplicación<br><em>Sustituye por tu imagen real</em></span>
+            </div>
+            <!-- ▲ FIN PLACEHOLDER ▲ -->
+          </div>
+
+          <div class="reveal" style="animation-delay:.15s">
+            <div class="feature-list">
+              <div class="feature-item">
+                <span class="feature-icon">🗃️</span>
+                <div class="feature-item-text">
+                  <h4>Persistencia Robusta</h4>
+                  <p>Arquitectura relacional con Hibernate 5.2 y pool de conexiones C3P0.</p>
+                </div>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon">👨‍💼</span>
+                <div class="feature-item-text">
+                  <h4>Entorno Administrador</h4>
+                  <p>CRUD avanzado para inventario y usuarios con <code>MyFormException</code>.</p>
+                </div>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon">🛒</span>
+                <div class="feature-item-text">
+                  <h4>Entorno Cliente</h4>
+                  <p>Tienda interactiva con carrito, historial y sistema de reseñas con estrellas.</p>
+                </div>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon">📑</span>
+                <div class="feature-item-text">
+                  <h4>Generación de Informes</h4>
+                  <p>Facturas y listados exportados mediante JasperReports en PDF.</p>
+                </div>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon">🧪</span>
+                <div class="feature-item-text">
+                  <h4>Calidad de Software</h4>
+                  <p>Tests automatizados con TestFX y pruebas unitarias con JUnit 4.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section>
-        <div>
-            <h2>Sección 3</h2>
-            <h2>Bienvenido a la Animación de Scroll</h2>
-            <p>Este es un ejemplo de cómo puedes hacer que los elementos se deslicen y aparezcan al hacer scroll
-                hacia abajo en la página.
-                Este es un ejemplo de cómo puedes hacer que los elementos se deslicen y aparezcan al hacer scroll
-                hacia abajo en la página.
-                Este es un ejemplo de cómo puedes hacer que los elementos se deslicen y aparezcan al hacer scroll
-                hacia abajo en la página.</p>
+    <!-- ══════════════════════════════════════
+         SECCIÓN — OBJETIVOS
+         ══════════════════════════════════════ -->
+    <section id="objetivos" aria-labelledby="objetivos-heading">
+      <div class="container">
+        <div class="reveal">
+          <div class="title-accent"></div>
+          <h2 class="section-title" id="objetivos-heading">Objetivos Técnicos</h2>
+          <p class="section-subtitle">Metas cumplidas al finalizar el desarrollo del proyecto</p>
         </div>
+        <div class="objectives-grid">
+          <div class="obj-card reveal">
+            <div class="obj-num">01</div>
+            <h3>Persistencia Robusta</h3>
+            <p>Implementar una capa de acceso a datos estable usando Hibernate con configuración JPA y pool de conexiones C3P0.</p>
+          </div>
+          <div class="obj-card reveal" style="animation-delay:.1s">
+            <div class="obj-num">02</div>
+            <h3>CRUD Administrador</h3>
+            <p>Módulo administrativo completo para gestionar libros, usuarios y pedidos con validaciones y manejo de excepciones propias.</p>
+          </div>
+          <div class="obj-card reveal" style="animation-delay:.2s">
+            <div class="obj-num">03</div>
+            <h3>Tienda Interactiva</h3>
+            <p>Interfaz de cliente con carrito de la compra, historial de pedidos y sistema de valoración con estrellas.</p>
+          </div>
+          <div class="obj-card reveal" style="animation-delay:.3s">
+            <div class="obj-num">04</div>
+            <h3>Informes PDF</h3>
+            <p>Generación automática de facturas y listados de inventario mediante la librería JasperReports.</p>
+          </div>
+          <div class="obj-card reveal" style="animation-delay:.4s">
+            <div class="obj-num">05</div>
+            <h3>Tests Automatizados</h3>
+            <p>Suite de pruebas de interfaz gráfica con TestFX y pruebas unitarias de lógica de negocio con JUnit 4.</p>
+          </div>
+          <div class="obj-card reveal" style="animation-delay:.5s">
+            <div class="obj-num">06</div>
+            <h3>Documentación Completa</h3>
+            <p>JavaDoc en todas las clases, Manual de Usuario y esta Memoria Web como entregables finales del proyecto.</p>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section>
-        <div>
-            <h2>Sección 4</h2>
-            <h2>Bienvenido a la Animación de Scroll</h2>
-            <p>Este es un ejemplo de cómo puedes hacer que los elementos se deslicen y aparezcan al hacer scroll
-                hacia abajo en la página.
-                Este es un ejemplo de cómo puedes hacer que los elementos se deslicen y aparezcan al hacer scroll
-                hacia abajo en la página.
-                Este es un ejemplo de cómo puedes hacer que los elementos se deslicen y aparezcan al hacer scroll
-                hacia abajo en la página.</p>
+    <!-- ══════════════════════════════════════
+         SECCIÓN — TAREAS Y CRONOGRAMA (GANTT)
+         Datos reales del GanttProject del README
+         ══════════════════════════════════════ -->
+    <section id="cronograma" aria-labelledby="cronograma-heading">
+      <div class="container">
+        <div class="reveal">
+          <div class="title-accent"></div>
+          <h2 class="section-title" id="cronograma-heading">Tareas y Cronograma</h2>
+          <p class="section-subtitle">
+            Planificación del desarrollo — 50 horas distribuidas entre diciembre 2025 y febrero 2026
+          </p>
         </div>
+
+        <!-- Captura del GanttProject PNG real -->
+        <!-- ▼ IMAGEN GANTT REAL DEL PROYECTO ▼ -->
+        <div class="gantt-wrapper reveal">
+          <p style="font-size:.78rem;color:var(--text-muted);margin-bottom:1rem;font-weight:500;">
+            📊 Diagrama de Gantt generado con GanttProject — Datos reales del proyecto
+          </p>
+          <!-- Imagen real del GanttProject incluida desde la carpeta README -->
+          <img
+            src="README/Proyecto BookBugs.png"
+            alt="Diagrama de Gantt del proyecto Book &amp; Bugs generado en GanttProject"
+            style="width:100%;border-radius:8px;border:1px solid var(--border);"
+          />
+        </div>
+        <!-- ▲ FIN IMAGEN GANTT ▲ -->
+
+        <!-- Gantt interactivo HTML/CSS con los datos REALES del PNG -->
+        <div class="gantt-wrapper reveal" style="margin-top:2rem;">
+          <p style="font-size:.78rem;color:var(--text-muted);margin-bottom:1.25rem;font-weight:600;">
+            🗓️ Vista detallada interactiva — Escala diciembre 2025 → febrero 2026
+          </p>
+          <table class="gantt-table" role="table" aria-label="Diagrama de Gantt interactivo">
+            <thead>
+              <tr class="gantt-header">
+                <th class="task-col">Tarea</th>
+                <!-- Diciembre 2025: semanas S1-S5 (9–26) -->
+                <th class="month-col" colspan="12" style="text-align:center">Diciembre 2025</th>
+                <!-- Vacaciones Navidad -->
+                <th class="month-col" colspan="3" style="text-align:center;color:#aaa">Nav.</th>
+                <!-- Enero 2026 -->
+                <th class="month-col" colspan="22" style="text-align:center">Enero 2026</th>
+                <!-- Febrero 2026 -->
+                <th class="month-col" colspan="9" style="text-align:center">Febrero 2026</th>
+              </tr>
+            </thead>
+            <tbody id="gantt-body">
+              <!-- Filas generadas por script.js -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Leyenda -->
+        <div class="reveal" style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.25rem;font-size:.78rem;">
+          <span style="display:flex;align-items:center;gap:.4rem"><span style="width:24px;height:10px;background:linear-gradient(90deg,#c0392b,#e74c3c);border-radius:5px;display:inline-block"></span> Fase crítica</span>
+          <span style="display:flex;align-items:center;gap:.4rem"><span style="width:24px;height:10px;background:linear-gradient(90deg,var(--blue-dark),var(--blue-light));border-radius:5px;display:inline-block"></span> Fase normal</span>
+          <span style="display:flex;align-items:center;gap:.4rem"><span style="width:24px;height:10px;background:linear-gradient(90deg,var(--gold-dark),var(--gold));border-radius:5px;display:inline-block"></span> Pruebas / Calidad</span>
+          <span style="display:flex;align-items:center;gap:.4rem"><span style="width:24px;height:10px;background:repeating-linear-gradient(45deg,#ccc 0,#ccc 3px,#e0e0e0 3px,#e0e0e0 6px);border-radius:5px;display:inline-block"></span> Vacaciones (no lectivo)</span>
+        </div>
+      </div>
     </section>
 
-    <section>
-        <div>
-            <h2>Sección 5</h2>
-            <h2>Bienvenido a la Animación de Scroll</h2>
-            <p>Este es un ejemplo de cómo puedes hacer que los elementos se deslicen y aparezcan al hacer scroll
-                hacia abajo en la página.
-                Este es un ejemplo de cómo puedes hacer que los elementos se deslicen y aparezcan al hacer scroll
-                hacia abajo en la página.
-                Este es un ejemplo de cómo puedes hacer que los elementos se deslicen y aparezcan al hacer scroll
-                hacia abajo en la página.</p>
+    <!-- ══════════════════════════════════════
+         SECCIÓN — RECURSOS
+         ══════════════════════════════════════ -->
+    <section id="recursos" aria-labelledby="recursos-heading">
+      <div class="container">
+        <div class="reveal">
+          <div class="title-accent"></div>
+          <h2 class="section-title" id="recursos-heading">Recursos Utilizados</h2>
+          <p class="section-subtitle">Tecnologías, herramientas y licencias del proyecto</p>
         </div>
+        <div class="resources-grid">
+          <div class="resource-card reveal">
+            <div class="res-icon">☕</div>
+            <h3>Java 17 + JavaFX</h3>
+            <p>Lenguaje y framework de interfaz gráfica de escritorio multiplataforma.</p>
+            <span class="res-badge badge-free">Open Source</span>
+          </div>
+          <div class="resource-card reveal" style="animation-delay:.1s">
+            <div class="res-icon">🗃️</div>
+            <h3>Hibernate 5.2</h3>
+            <p>ORM para mapeo objeto-relacional con configuración JPA y anotaciones.</p>
+            <span class="res-badge badge-free">Open Source</span>
+          </div>
+          <div class="resource-card reveal" style="animation-delay:.2s">
+            <div class="res-icon">🐬</div>
+            <h3>MySQL</h3>
+            <p>Sistema de gestión de base de datos relacional. Tier básico en nube.</p>
+            <span class="res-badge badge-paid">10,00 €/mes</span>
+          </div>
+          <div class="resource-card reveal" style="animation-delay:.3s">
+            <div class="res-icon">📊</div>
+            <h3>JasperReports</h3>
+            <p>Motor de generación de informes y facturas exportadas en PDF.</p>
+            <span class="res-badge badge-free">Open Source</span>
+          </div>
+          <div class="resource-card reveal" style="animation-delay:.4s">
+            <div class="res-icon">🧪</div>
+            <h3>TestFX + JUnit 4</h3>
+            <p>Framework de pruebas de interfaz gráfica JavaFX y unitarias.</p>
+            <span class="res-badge badge-free">Open Source</span>
+          </div>
+          <div class="resource-card reveal" style="animation-delay:.5s">
+            <div class="res-icon">📅</div>
+            <h3>GanttProject</h3>
+            <p>Herramienta de planificación temporal y gestión del proyecto.</p>
+            <span class="res-badge badge-free">Open Source</span>
+          </div>
+          <div class="resource-card reveal" style="animation-delay:.6s">
+            <div class="res-icon">🔧</div>
+            <h3>Git + GitHub</h3>
+            <p>Control de versiones y repositorio centralizado del código fuente.</p>
+            <span class="res-badge badge-free">Gratuito</span>
+          </div>
+          <div class="resource-card reveal" style="animation-delay:.7s">
+            <div class="res-icon">⚙️</div>
+            <h3>Maven</h3>
+            <p>Gestión de dependencias y ciclo de vida del proyecto Java.</p>
+            <span class="res-badge badge-free">Open Source</span>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <footer>
-        <div>
-            <h2>Sección Final</h2>
-            <p>¡Gracias por visitar! Este es un ejemplo simple de animaciones de scroll utilizando solo CSS y
-                JavaScript.</p>
+    <!-- ══════════════════════════════════════
+         SECCIÓN — PRESUPUESTO
+         ══════════════════════════════════════ -->
+    <section id="presupuesto" aria-labelledby="presupuesto-heading">
+      <div class="container">
+        <div class="reveal">
+          <div class="title-accent"></div>
+          <h2 class="section-title" id="presupuesto-heading">Presupuesto</h2>
+          <p class="section-subtitle">Estimación económica del proyecto — Coste total del desarrollo</p>
         </div>
-    </footer>
-    <article class="fotacas">
-        <img src="https://s1.significados.com/foto/paisaje-og.jpg?class=ogImageWide">
-        <img src="https://concepto.de/wp-content/uploads/2015/03/paisaje-e1549600034372.jpg">
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjdYUeahAfgNzW0YDioQUaWr7jFYY-sKx10QEEeEhakkaUvf2JiG4gxKdgKoDsvOYifh9TNzcHxGh9TdZh-2u_OXo9gaaA7cysSH_RoUmexG0o3y5Etxajj1GNrYen9IiwK-_yfbrPQOjs/s1600/imagenes-de-paisajes-para-dibujar-bonitos.jpg">
-        <img src="https://d36tnp772eyphs.cloudfront.net/blogs/2/2017/08/01-ciudad-de-mexico.jpg">
-        <img src="https://metrovacesa.com/wp-content/uploads/2019/10/vivir-en-ciudad-y-campo.jpg">
-        <img src="https://img.freepik.com/foto-gratis/atardecer-ciudad-rascacielos_1127-192.jpg?semt=ais_hybrid">
-        <img src="https://www.blogdelfotografo.com/wp-content/uploads/2015/06/9722222252_29405e6496_k.jpg">
-        <img src="https://media.vogue.mx/photos/5f95db10d3489a2988c5d7b6/2:3/w_2560%2Cc_limit/Ciudad-de-Me%25CC%2581xico-A%25CC%2581ngel-de-la-Independencia.jpg">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOHv8imHKNUzFNcYntSxFU4n26DQ6WHuJmwg&s">
-        <img src="https://images.unsplash.com/photo-1542902093-d55926049754?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2l1ZGFkJTIwZGUlMjBub2NoZXxlbnwwfHwwfHx8MA%3D%3D">
-    </article>
-    <section class="cosas">
-        wolaa
-        <div class="pulser"></div>
-        <div class="pulser"></div>
-        <div class="pulser"></div>
+        <div class="budget-wrapper reveal">
+          <table class="budget-table" role="table" aria-label="Tabla de presupuesto del proyecto">
+            <thead>
+              <tr>
+                <th>Concepto</th>
+                <th>Detalles</th>
+                <th style="text-align:right">Coste Estimado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>⚒️ Recursos Humanos</strong></td>
+                <td>Desarrollador Junior (50 h × 20 €/h)</td>
+                <td style="text-align:right;font-weight:600;color:var(--text)">1.000,00 €</td>
+              </tr>
+              <tr>
+                <td><strong>💻 Recursos Materiales</strong></td>
+                <td>Amortización del equipo (10 días)</td>
+                <td style="text-align:right;font-weight:600;color:var(--text)">15,00 €</td>
+              </tr>
+              <tr>
+                <td><strong>📄 Licencias Software</strong></td>
+                <td>Open Source (Java, Hibernate, GanttProject…)</td>
+                <td style="text-align:right;font-weight:600;color:var(--blue-dark)">0,00 €</td>
+              </tr>
+              <tr>
+                <td><strong>☁️ Infraestructura</strong></td>
+                <td>BBDD Cloud — Tier Básico</td>
+                <td style="text-align:right;font-weight:600;color:var(--text)">10,00 €</td>
+              </tr>
+              <tr class="budget-total">
+                <td colspan="2"><strong>💰 TOTAL (incl. 10% contingencia)</strong></td>
+                <td style="text-align:right"><strong>1.127,50 €</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Info adicional -->
+        <div class="reveal" style="max-width:760px;margin:1.5rem auto 0;display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1.25rem;text-align:center;box-shadow:var(--shadow);">
+            <div style="font-size:1.8rem;margin-bottom:.4rem">⏱️</div>
+            <div style="font-size:1.6rem;font-weight:800;color:var(--blue-dark)">50 h</div>
+            <div style="font-size:.78rem;color:var(--text-muted)">Duración total del proyecto</div>
+          </div>
+          <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1.25rem;text-align:center;box-shadow:var(--shadow);">
+            <div style="font-size:1.8rem;margin-bottom:.4rem">💶</div>
+            <div style="font-size:1.6rem;font-weight:800;color:var(--gold-dark)">20 €/h</div>
+            <div style="font-size:.78rem;color:var(--text-muted)">Tarifa desarrollador junior</div>
+          </div>
+        </div>
+      </div>
     </section>
-    <div class="load"></div>
-    <div class="solo"></div>
-</main>
-    <script type="module" src="script.js"></script>
-  </body>
+
+    <!-- ══════════════════════════════════════
+         SECCIÓN — SEGUIMIENTO Y EVALUACIÓN
+         ══════════════════════════════════════ -->
+    <section id="seguimiento" aria-labelledby="seguimiento-heading">
+      <div class="container">
+        <div class="reveal">
+          <div class="title-accent"></div>
+          <h2 class="section-title" id="seguimiento-heading">Seguimiento y Evaluación</h2>
+          <p class="section-subtitle">Metodología de control de calidad y auditoría del proyecto</p>
+        </div>
+
+        <div class="tracking-grid">
+          <!-- Card Odoo -->
+          <div class="tracking-card reveal">
+            <div class="tracking-header">
+              <span class="ic">🕐</span>
+              <h3>Control de Tiempos con Odoo</h3>
+            </div>
+            <p>
+              Uso de la plataforma <strong>Odoo</strong> (módulos Project + Timesheets) para el
+              registro y auditoría de las horas de desarrollo frente a la estimación inicial.
+              Permite detectar desviaciones y tomar decisiones correctivas a tiempo.
+            </p>
+            <!-- ▼ PLACEHOLDER — Sustituir por odoo_timesheet.png ▼ -->
+            <div class="img-placeholder" title="Sustituir por odoo_timesheet.png">
+              <span>📸</span>
+              <span>Captura Odoo Timesheets<br><em>Ruta: odoo_timesheet.png</em></span>
+            </div>
+            <!-- ▲ FIN PLACEHOLDER ▲ -->
+          </div>
+
+          <!-- Card BPMN -->
+          <div class="tracking-card reveal" style="animation-delay:.15s">
+            <div class="tracking-header">
+              <span class="ic">🔄</span>
+              <h3>Evaluación Continua con BPMN</h3>
+            </div>
+            <p>
+              Modelado del flujo de trabajo y validaciones mediante <strong>diagramas BPMN</strong>
+              (Business Process Model and Notation). Documenta los procesos clave: alta de usuario,
+              proceso de compra y gestión de inventario.
+            </p>
+            <!-- ▼ PLACEHOLDER — Sustituir por diagrama_bpmn.png ▼ -->
+            <div class="img-placeholder" title="Sustituir por diagrama_bpmn.png">
+              <span>📸</span>
+              <span>Diagrama BPMN del Flujo<br><em>Ruta: diagrama_bpmn.png</em></span>
+            </div>
+            <!-- ▲ FIN PLACEHOLDER ▲ -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         SECCIÓN — ANEXOS / DOCUMENTACIÓN
+         ══════════════════════════════════════ -->
+    <section id="anexos" style="padding:5rem 0;" aria-labelledby="anexos-heading">
+      <div class="container">
+        <div class="reveal">
+          <div class="title-accent"></div>
+          <h2 class="section-title" id="anexos-heading">Documentación Técnica y Anexos</h2>
+          <p class="section-subtitle">Diagramas, modelos y recursos técnicos del proyecto</p>
+        </div>
+
+        <div class="anexos-grid">
+          <!-- Diagrama ER -->
+          <div class="anexo-card reveal">
+            <!-- ▼ PLACEHOLDER — Sustituir por diagrama_ER.png ▼ -->
+            <div class="anexo-preview" title="Sustituir por diagrama_ER.png">🗺️</div>
+            <!-- ▲ FIN PLACEHOLDER ▲ -->
+            <div class="anexo-info">
+              <h3>Arquitectura de Base de Datos</h3>
+              <p>Diagrama Entidad-Relación de las tablas User, Book, Order y Commentate con sus relaciones JPA.</p>
+            </div>
+          </div>
+
+          <!-- Diagrama de Clases -->
+          <div class="anexo-card reveal" style="animation-delay:.1s">
+            <!-- ▼ PLACEHOLDER — Sustituir por diagrama_clases.png ▼ -->
+            <div class="anexo-preview" title="Sustituir por diagrama_clases.png">📐</div>
+            <!-- ▲ FIN PLACEHOLDER ▲ -->
+            <div class="anexo-info">
+              <h3>Diagrama de Clases UML</h3>
+              <p>Estructura completa de entidades, clases DAO e implementaciones de la capa de negocio.</p>
+            </div>
+          </div>
+
+          <!-- Casos de Uso -->
+          <div class="anexo-card reveal" style="animation-delay:.2s">
+            <div class="anexo-preview">🧩</div>
+            <div class="anexo-info">
+              <h3>Casos de Uso</h3>
+              <p>Diagrama UML que describe la interacción entre actores (Admin / Cliente) y el sistema.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Botón descarga Manual -->
+        <div class="download-section reveal">
+          <a href="documents/Manual_Usuario.pdf" class="btn-download" id="btn-download">
+            📘 Descargar Manual de Usuario
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer>
+    <p>
+      &copy; 2026 <strong>Book &amp; Bugs</strong> — Proyecto PDAM 2025-26 |
+      Desarrollado por <strong>Mikel</strong> |
+      <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+    </p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
 </html>
