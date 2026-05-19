@@ -11,9 +11,17 @@
   <!-- Favicon inline -->
   <link rel="icon"
     href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>" />
+  <!-- Mermaid for diagrams -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true});</script>
 </head>
 
 <body>
+  <!-- Canvas animaciones de fondo futurista -->
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <div class="bg-overlay"></div>
+
+  <a href="#introduccion" class="skip-link">Saltar al contenido</a>
 
   <!-- ============================================================
        HEADER — Sticky Nav Bar con efecto blur
@@ -22,25 +30,28 @@
     <nav class="nav-inner" aria-label="Navegación principal">
 
       <!-- Izquierda: Brand / Logo -->
-      <a href="#inicio" class="nav-brand" aria-label="Ir al inicio">
-        <div class="logo-placeholder" aria-hidden="true">B</div>
+      <a href="#introduccion" class="nav-brand" aria-label="Ir al inicio">
+        <img src="assets/img/Book&Bugs_Logo.png" alt="Book & Bugs Logo" class="brand-logo">
         <span class="brand-text">Book &amp; Bugs</span>
       </a>
 
       <!-- Centro: Navegación — según Quedebecontenerheader.png -->
       <ul class="nav-links" role="list">
-        <li><a href="#inicio" class="nav-link active">Inicio</a></li>
-        <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
-        <li><a href="#contexto" class="nav-link">Origen y contextualización</a></li>
-        <li><a href="#objetivos" class="nav-link">Objetivos</a></li>
-        <li><a href="#cronograma" class="nav-link">Tareas y Cronograma</a></li>
-        <li><a href="#recursos" class="nav-link">Recursos</a></li>
+        <li><a href="#introduccion" class="nav-link active">Introducción</a></li>
+        <li><a href="#origen" class="nav-link">Origen</a></li>
+        <li><a href="#objetivo-general" class="nav-link">Objetivo General</a></li>
+        <li><a href="#tareas" class="nav-link">Tareas</a></li>
+        <li><a href="#recursos-humanos" class="nav-link">RRHH</a></li>
+        <li><a href="#recursos-materiales" class="nav-link">RRMM</a></li>
+        <li><a href="#cronograma" class="nav-link">Cronograma</a></li>
         <li><a href="#presupuesto" class="nav-link">Presupuesto</a></li>
-        <li><a href="#seguimiento" class="nav-link">Seguimiento y Evaluación</a></li>
+        <li><a href="#seguimiento" class="nav-link">Seguimiento</a></li>
+        <li><a href="#anexos" class="nav-link">Anexos</a></li>
+        <li><a href="#bibliografia" class="nav-link">Bibliografía</a></li>
       </ul>
 
       <!-- Derecha: CTA GitHub -->
-      <a href="https://github.com" target="_blank" rel="noopener" class="nav-cta" id="btn-github">
+      <a href="https://github.com/AGL-12/Reto2_Libreria" target="_blank" rel="noopener" class="nav-cta" id="btn-github">
         <!-- GitHub SVG icon -->
         <svg viewBox="0 0 16 16" aria-hidden="true">
           <path
@@ -59,15 +70,19 @@
 
   <!-- Mobile Menu -->
   <nav class="mobile-menu" id="mobile-menu" aria-label="Menú móvil" role="navigation">
-    <a href="#inicio" class="mob-link">Inicio</a>
+    <a href="#introduccion" class="mob-link">Inicio</a>
     <a href="#nosotros" class="mob-link">Nosotros</a>
-    <a href="#contexto" class="mob-link">Origen y contextualización</a>
-    <a href="#objetivos" class="mob-link">Objetivos</a>
-    <a href="#cronograma" class="mob-link">Tareas y Cronograma</a>
-    <a href="#recursos" class="mob-link">Recursos</a>
+    <a href="#origen" class="mob-link">Origen</a>
+    <a href="#objetivo-general" class="mob-link">Objetivos</a>
+    <a href="#tareas" class="mob-link">Tareas</a>
+    <a href="#cronograma" class="mob-link">Planificación</a>
+    <a href="#recursos-humanos" class="mob-link">Recursos Humanos</a>
+    <a href="#recursos-materiales" class="mob-link">Recursos Materiales</a>
     <a href="#presupuesto" class="mob-link">Presupuesto</a>
-    <a href="#seguimiento" class="mob-link">Seguimiento y Evaluación</a>
-    <a href="https://github.com" target="_blank" rel="noopener" class="mob-link">Ver Repositorio →</a>
+    <a href="#seguimiento" class="mob-link">Seguimiento</a>
+    <a href="#anexos" class="mob-link">Anexos</a>
+    <a href="#bibliografia" class="mob-link">Bibliografía</a>
+    <a href="https://github.com/AGL-12/Reto2_Libreria" target="_blank" rel="noopener" class="mob-link">Ver Repositorio →</a>
   </nav>
 
   <!-- ============================================================
@@ -78,7 +93,8 @@
     <!-- ══════════════════════════════════════
          SECCIÓN 1 — INICIO / HERO
          ══════════════════════════════════════ -->
-    <section id="inicio" aria-labelledby="hero-heading">
+    <section id="introduccion" aria-labelledby="hero-heading">
+      <img src="assets/img/Book&Bugs_Logo.png" alt="" class="hero-logo-bg" aria-hidden="true">
       <div class="hero-inner">
 
         <!-- Texto principal -->
@@ -90,8 +106,8 @@
           </h1>
           <p class="hero-desc">
             Solución integral para la digitalización de pequeñas y medianas librerías.
-            Aplicación de escritorio JavaFX con Hibernate, JasperReports y pruebas
-            automatizadas con TestFX &amp; JUnit.
+Aplicación de escritorio JavaFX con Hibernate 5.2, MySQL y pruebas
+             automatizadas con TestFX &amp; JUnit.
           </p>
           <div class="hero-btns">
             <a href="#contexto" class="btn-primary">📖 Explorar Proyecto</a>
@@ -111,8 +127,8 @@
           <div class="tech-card">
             <div class="tech-icon" style="background:linear-gradient(135deg,#5084C1,#789DE5)">🗄️</div>
             <div>
-              <h4>MySQL + JPA</h4>
-              <p>Base de datos relacional con entidades mapeadas JPA</p>
+              <h4>MySQL + Patrón DAO</h4>
+              <p>Base de datos relacional con relaciones mediante claves foráneas</p>
             </div>
           </div>
           <div class="tech-card">
@@ -135,22 +151,37 @@
     </section>
 
     <!-- ══════════════════════════════════════
-         SECCIÓN — NOSOTROS
+         SECCIÓN — NOSOTROS (oculta de navegación principal)
          ══════════════════════════════════════ -->
-    <section id="nosotros" aria-labelledby="nosotros-heading">
+    <section id="nosotros">
       <div class="container">
         <div class="reveal">
           <div class="title-accent"></div>
           <h2 class="section-title" id="nosotros-heading">Nuestro Equipo</h2>
           <p class="section-subtitle">Desarrolladores del proyecto Book &amp; Bugs — PDAM 2025-26</p>
         </div>
-        <div class="team-grid reveal">
+<div class="team-grid reveal">
+          <div class="team-card">
+            <div class="avatar" style="background:linear-gradient(135deg,#E74C3C,#C0392B)">A</div>
+            <h3>Alex</h3>
+            <p class="role" style="margin-top:.3rem;font-size:.75rem">Hibernate 5.2 · MySQL · C3P0</p>
+          </div>
+          <div class="team-card">
+            <div class="avatar" style="background:linear-gradient(135deg,#9B59B6,#8E44AD)">A</div>
+            <h3>Ander</h3>
+            <p class="role" style="margin-top:.3rem;font-size:.75rem">JavaFX · Controllers</p>
+          </div>
           <div class="team-card">
             <div class="avatar" style="background:linear-gradient(135deg,#5084C1,#789DE5)">M</div>
             <h3>Mikel</h3>
-            <p class="role">Desarrollador Full-Stack</p>
             <p class="role" style="margin-top:.3rem;font-size:.75rem">JavaFX · Hibernate · MySQL</p>
           </div>
+          <div class="team-card">
+            <div class="avatar" style="background:linear-gradient(135deg,#27AE60,#2ECC71)">U</div>
+            <h3>Unai</h3>
+            <p class="role" style="margin-top:.3rem;font-size:.75rem">CRUD · Admin model</p>
+          </div>
+        </div>
           <div class="team-card">
             <div class="avatar" style="background:linear-gradient(135deg,#D4A017,#F0C040)">📚</div>
             <h3>Book &amp; Bugs</h3>
@@ -166,40 +197,28 @@
         </div>
       </div>
     </section>
+    </section>
 
     <!-- ══════════════════════════════════════
          SECCIÓN 2 — ORIGEN Y CONTEXTUALIZACIÓN
          ══════════════════════════════════════ -->
-    <section id="contexto" aria-labelledby="contexto-heading">
+    <section id="origen" aria-labelledby="origen-heading">
       <div class="container">
         <div class="reveal">
           <div class="title-accent"></div>
-          <h2 class="section-title" id="contexto-heading">Origen y Contextualización</h2>
+          <h2 class="section-title" id="origen-heading">Origen y Contextualización</h2>
           <p class="section-subtitle">Nacimiento e impacto del proyecto en el sector editorial</p>
         </div>
 
         <div class="context-grid">
           <div class="context-text reveal">
-            <h3>¿Por qué Book &amp; Bugs?</h3>
+            <h3>¿Por qué Book & Bugs?</h3>
             <p>
-              El proyecto <strong>Book &amp; Bugs</strong> surge como una solución integral para la
-              digitalización de pequeñas y medianas librerías. Esta aplicación de escritorio permite a
-              los administradores controlar el catálogo de libros, usuarios y pedidos en tiempo real,
-              mientras ofrece a los clientes una experiencia de compra fluida e interactiva.
+              El proyecto <strong>Book &amp; Bugs</strong> nace como una respuesta tecnológica a la brecha digital que sufren las pequeñas y medianas librerías. Tras un análisis del sector, se evidencia que la dependencia de sistemas obsoletos o manuales para el control de inventario provoca descuadres de stock, ineficiencia administrativa y una menor retención de clientes frente a las grandes plataformas de comercio electrónico.
             </p>
             <p>
-              Desarrollada íntegramente en Java con JavaFX para la interfaz gráfica e Hibernate 5.2
-              como capa de persistencia, la aplicación demuestra un dominio técnico completo del
-              stack académico de PDAM.
+              Para resolver esta problemática, se ha desarrollado una solución integral de escritorio utilizando <strong>JavaFX</strong> para una experiencia de usuario fluida, respaldada por una arquitectura de base de datos relacional gestionada mediante <strong>Hibernate 5.2 (JPA)</strong>. La aplicación no solo centraliza la gestión del catálogo y los usuarios en tiempo real, sino que aporta un valor diferencial al incluir módulos interactivos para el cliente: carrito de compras dinámico, historial de pedidos y un sistema de valoraciones (reseñas y estrellas) que fomenta el engagement y la fidelización.
             </p>
-
-            <!-- Placeholder para imagen de la aplicación -->
-            <!-- ▼ SUSTITUYE ESTE BLOQUE POR TU CAPTURA DE PANTALLA ▼ -->
-            <div class="img-placeholder" title="Clic para sustituir por tu imagen de la app">
-              <span>🖥️</span>
-              <span>Captura principal de la aplicación<br><em>Sustituye por tu imagen real</em></span>
-            </div>
-            <!-- ▲ FIN PLACEHOLDER ▲ -->
           </div>
 
           <div class="reveal" style="animation-delay:.15s">
@@ -248,18 +267,18 @@
     <!-- ══════════════════════════════════════
          SECCIÓN — OBJETIVOS
          ══════════════════════════════════════ -->
-    <section id="objetivos" aria-labelledby="objetivos-heading">
+    <section id="objetivo-general" aria-labelledby="objetivo-general-heading">
       <div class="container">
         <div class="reveal">
           <div class="title-accent"></div>
-          <h2 class="section-title" id="objetivos-heading">Objetivos Técnicos</h2>
+          <h2 class="section-title" id="objetivo-general-heading">Objetivo General</h2>
           <p class="section-subtitle">Metas cumplidas al finalizar el desarrollo del proyecto</p>
         </div>
         <div class="objectives-grid">
           <div class="obj-card reveal">
             <div class="obj-num">01</div>
             <h3>Persistencia Robusta</h3>
-            <p>Implementar una capa de acceso a datos estable usando Hibernate con configuración JPA y pool de
+            <p>Implementar una capa de acceso a datos estable usando Hibernate 5.2 con configuración JPA y pool de
               conexiones C3P0.</p>
           </div>
           <div class="obj-card reveal" style="animation-delay:.1s">
@@ -285,11 +304,160 @@
             <p>Suite de pruebas de interfaz gráfica con TestFX y pruebas unitarias de lógica de negocio con JUnit 4.</p>
           </div>
           <div class="obj-card reveal" style="animation-delay:.5s">
-            <div class="obj-num">06</div>
-            <h3>Documentación Completa</h3>
+            <div class="obj-num obj-num-shifted">06</div>
+            <h3>Documentación<br>Completa</h3>
             <p>JavaDoc en todas las clases, Manual de Usuario y esta Memoria Web como entregables finales del proyecto.
             </p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    
+
+    <!-- ══════════════════════════════════════
+         SECCIÓN — TAREAS
+         ══════════════════════════════════════ -->
+    <section id="tareas" aria-labelledby="tareas-heading">
+      <div class="container">
+        <div class="reveal">
+          <div class="title-accent"></div>
+          <h2 class="section-title" id="tareas-heading">Tareas del Proyecto</h2>
+          <p class="section-subtitle">Desglose de las 13 tareas principales del desarrollo</p>
+        </div>
+        <div class="budget-wrapper reveal">
+          <table class="budget-table" role="table" aria-label="Tabla de tareas del proyecto">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Tarea</th>
+                <th>Fecha Inicio</th>
+                <th>Fecha Fin</th>
+                <th>Responsable</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>1</strong></td>
+                <td>Análisis de requisitos</td>
+                <td>09/12/2025</td>
+                <td>12/12/2025</td>
+                <td>Equipo</td>
+              </tr>
+              <tr>
+                <td><strong>2</strong></td>
+                <td>Diseño de Base de Datos</td>
+                <td>15/12/2025</td>
+                <td>17/12/2025</td>
+                <td>Alex</td>
+              </tr>
+              <tr>
+                <td><strong>3</strong></td>
+                <td>Diseño de interfaces UI</td>
+                <td>15/12/2025</td>
+                <td>17/12/2025</td>
+                <td>Ander</td>
+              </tr>
+              <tr>
+                <td><strong>4</strong></td>
+                <td>Diseño modelo libros</td>
+                <td>15/12/2025</td>
+                <td>17/12/2025</td>
+                <td>Mikel</td>
+              </tr>
+              <tr>
+                <td><strong>5</strong></td>
+                <td>Diseño módulo Admin</td>
+                <td>15/12/2025</td>
+                <td>17/12/2025</td>
+                <td>Unai</td>
+              </tr>
+              <tr>
+                <td style="color:#888"><strong>6</strong></td>
+                <td style="color:#888">Vacaciones de Navidad</td>
+                <td style="color:#888">18/12/2025</td>
+                <td style="color:#888">04/01/2026</td>
+                <td style="color:#888">—</td>
+              </tr>
+              <tr>
+                <td><strong>7</strong></td>
+                <td>Configuración Git</td>
+                <td>05/01/2026</td>
+                <td>06/01/2026</td>
+                <td>Alex</td>
+              </tr>
+              <tr>
+                <td><strong>8</strong></td>
+                <td>Entidades JPA / Hibernate</td>
+                <td>07/01/2026</td>
+                <td>10/01/2026</td>
+                <td>Alex</td>
+              </tr>
+              <tr>
+                <td><strong>9</strong></td>
+                <td>DAO y lógica de datos</td>
+                <td>11/01/2026</td>
+                <td>18/01/2026</td>
+                <td>Alex</td>
+              </tr>
+              <tr>
+                <td><strong>10</strong></td>
+                <td>Controladores / Login</td>
+                <td>11/01/2026</td>
+                <td>18/01/2026</td>
+                <td>Ander</td>
+              </tr>
+              <tr>
+                <td><strong>11</strong></td>
+                <td>CRUD Admin</td>
+                <td>11/01/2026</td>
+                <td>18/01/2026</td>
+                <td>Unai</td>
+              </tr>
+              <tr>
+                <td><strong>12</strong></td>
+                <td>Tienda, Carrito, Historial</td>
+                <td>19/01/2026</td>
+                <td>25/01/2026</td>
+                <td>Ander</td>
+              </tr>
+              <tr>
+                <td><strong>13</strong></td>
+                <td>Libros y comentarios</td>
+                <td>19/01/2026</td>
+                <td>25/01/2026</td>
+                <td>Mikel</td>
+              </tr>
+              <tr>
+                <td><strong>14</strong></td>
+                <td>JasperReports</td>
+                <td>26/01/2026</td>
+                <td>01/02/2026</td>
+                <td>Mikel</td>
+              </tr>
+              <tr>
+                <td><strong>15</strong></td>
+                <td>Tests y corrección de bugs</td>
+                <td>02/02/2026</td>
+                <td>06/02/2026</td>
+                <td>Mikel</td>
+              </tr>
+              <tr>
+                <td><strong>16</strong></td>
+                <td>Manual y JavaDoc</td>
+                <td>02/02/2026</td>
+                <td>06/02/2026</td>
+                <td>Unai</td>
+              </tr>
+              <tr>
+                <td><strong>17</strong></td>
+                <td>Memoria final</td>
+                <td>02/02/2026</td>
+                <td>08/02/2026</td>
+                <td>Unai</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
@@ -304,7 +472,7 @@
           <div class="title-accent"></div>
           <h2 class="section-title" id="cronograma-heading">Tareas y Cronograma</h2>
           <p class="section-subtitle">
-            Planificación del desarrollo — 50 horas distribuidas entre diciembre 2025 y febrero 2026
+            Planificación del desarrollo — 200 horas distribuidas entre diciembre 2025 y febrero 2026
           </p>
         </div>
 
@@ -314,8 +482,8 @@
           <p style="font-size:.78rem;color:var(--text-muted);margin-bottom:1rem;font-weight:500;">
             📊 Diagrama de Gantt generado con GanttProject — Datos reales del proyecto
           </p>
-          <!-- Imagen real del GanttProject incluida desde la carpeta README -->
-          <img src="README/Proyecto BookBugs.png"
+          <!-- Imagen real del GanttProject -->
+          <img src="assets/img/diagramaGanttProject.png"
             alt="Diagrama de Gantt del proyecto Book &amp; Bugs generado en GanttProject"
             style="width:100%;border-radius:8px;border:1px solid var(--border);" />
         </div>
@@ -337,7 +505,7 @@
                 <!-- Enero 2026 -->
                 <th class="month-col" colspan="22" style="text-align:center">Enero 2026</th>
                 <!-- Febrero 2026 -->
-                <th class="month-col" colspan="9" style="text-align:center">Febrero 2026</th>
+                <th class="month-col" colspan="23" style="text-align:center">Febrero 2026</th>
               </tr>
             </thead>
             <tbody id="gantt-body">
@@ -365,19 +533,69 @@
     </section>
 
     <!-- ══════════════════════════════════════
-         SECCIÓN — RECURSOS
+         SECCIÓN — RECURSOS HUMANOS
          ══════════════════════════════════════ -->
-    <section id="recursos" aria-labelledby="recursos-heading">
+    <section id="recursos-humanos" aria-labelledby="recursos-humanos-heading">
       <div class="container">
         <div class="reveal">
           <div class="title-accent"></div>
-          <h2 class="section-title" id="recursos-heading">Recursos Utilizados</h2>
+          <h2 class="section-title" id="recursos-humanos-heading">Recursos Humanos</h2>
+          <p class="section-subtitle">Equipo de desarrollo y distribución de tareas</p>
+        </div>
+        <div class="budget-wrapper reveal">
+          <table class="budget-table" role="table" aria-label="Tabla de recursos humanos del proyecto">
+            <thead>
+              <tr>
+                <th>Miembro</th>
+                <th>Responsabilidades</th>
+                <th style="text-align:right">Horas</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Alex</strong></td>
+                <td>DBImplementation, Pool, Hilo</td>
+                <td style="text-align:right;font-weight:600">55 h</td>
+              </tr>
+              <tr>
+                <td><strong>Ander</strong></td>
+                <td>Controllers, Carrito, User, Order</td>
+                <td style="text-align:right;font-weight:600">50 h</td>
+              </tr>
+              <tr>
+                <td><strong>Mikel</strong></td>
+                <td>Comments, Jasper, Tests, JavaDoc</td>
+                <td style="text-align:right;font-weight:600">50 h</td>
+              </tr>
+              <tr>
+                <td><strong>Unai</strong></td>
+                <td>CRUD, Admin model</td>
+                <td style="text-align:right;font-weight:600">45 h</td>
+              </tr>
+              <tr class="budget-total">
+                <td colspan="2"><strong>📊 TOTAL HORAS</strong></td>
+                <td style="text-align:right"><strong>200 h</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         SECCIÓN — RECURSOS MATERIALES
+         ══════════════════════════════════════ -->
+    <section id="recursos-materiales" aria-labelledby="recursos-materiales-heading">
+      <div class="container">
+        <div class="reveal">
+          <div class="title-accent"></div>
+          <h2 class="section-title" id="recursos-materiales-heading">Recursos Materiales</h2>
           <p class="section-subtitle">Tecnologías, herramientas y licencias del proyecto</p>
         </div>
         <div class="resources-grid">
           <div class="resource-card reveal">
             <div class="res-icon">☕</div>
-            <h3>Java 17 + JavaFX</h3>
+            <h3>Java + JavaFX</h3>
             <p>Lenguaje y framework de interfaz gráfica de escritorio multiplataforma.</p>
             <span class="res-badge badge-free">Open Source</span>
           </div>
@@ -390,8 +608,8 @@
           <div class="resource-card reveal" style="animation-delay:.2s">
             <div class="res-icon">🐬</div>
             <h3>MySQL</h3>
-            <p>Sistema de gestión de base de datos relacional. Tier básico en nube.</p>
-            <span class="res-badge badge-paid">10,00 €/mes</span>
+            <p>Sistema de gestión de base de datos relacional. Instalación local gratuita / Community Edition.</p>
+            <span class="res-badge badge-free">Open Source</span>
           </div>
           <div class="resource-card reveal" style="animation-delay:.3s">
             <div class="res-icon">📊</div>
@@ -417,12 +635,7 @@
             <p>Control de versiones y repositorio centralizado del código fuente.</p>
             <span class="res-badge badge-free">Gratuito</span>
           </div>
-          <div class="resource-card reveal" style="animation-delay:.7s">
-            <div class="res-icon">⚙️</div>
-            <h3>Maven</h3>
-            <p>Gestión de dependencias y ciclo de vida del proyecto Java.</p>
-            <span class="res-badge badge-free">Open Source</span>
-          </div>
+
         </div>
       </div>
     </section>
@@ -435,60 +648,264 @@
         <div class="reveal">
           <div class="title-accent"></div>
           <h2 class="section-title" id="presupuesto-heading">Presupuesto</h2>
-          <p class="section-subtitle">Estimación económica del proyecto — Coste total del desarrollo</p>
-        </div>
-        <div class="budget-wrapper reveal">
-          <table class="budget-table" role="table" aria-label="Tabla de presupuesto del proyecto">
-            <thead>
-              <tr>
-                <th>Concepto</th>
-                <th>Detalles</th>
-                <th style="text-align:right">Coste Estimado</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>⚒️ Recursos Humanos</strong></td>
-                <td>Desarrollador Junior (50 h × 20 €/h)</td>
-                <td style="text-align:right;font-weight:600;color:var(--text)">1.000,00 €</td>
-              </tr>
-              <tr>
-                <td><strong>💻 Recursos Materiales</strong></td>
-                <td>Amortización del equipo (10 días)</td>
-                <td style="text-align:right;font-weight:600;color:var(--text)">15,00 €</td>
-              </tr>
-              <tr>
-                <td><strong>📄 Licencias Software</strong></td>
-                <td>Open Source (Java, Hibernate, GanttProject…)</td>
-                <td style="text-align:right;font-weight:600;color:var(--blue-dark)">0,00 €</td>
-              </tr>
-              <tr>
-                <td><strong>☁️ Infraestructura</strong></td>
-                <td>BBDD Cloud — Tier Básico</td>
-                <td style="text-align:right;font-weight:600;color:var(--text)">10,00 €</td>
-              </tr>
-              <tr class="budget-total">
-                <td colspan="2"><strong>💰 TOTAL (incl. 10% contingencia)</strong></td>
-                <td style="text-align:right"><strong>1.127,50 €</strong></td>
-              </tr>
-            </tbody>
-          </table>
+          <p class="section-subtitle">Estimación económica detallada del proyecto</p>
         </div>
 
-        <!-- Info adicional -->
-        <div class="reveal"
-          style="max-width:760px;margin:1.5rem auto 0;display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
-          <div
-            style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1.25rem;text-align:center;box-shadow:var(--shadow);">
-            <div style="font-size:1.8rem;margin-bottom:.4rem">⏱️</div>
-            <div style="font-size:1.6rem;font-weight:800;color:var(--blue-dark)">50 h</div>
-            <div style="font-size:.78rem;color:var(--text-muted)">Duración total del proyecto</div>
+        <!-- 1. RECURSOS HUMANOS -->
+        <div class="reveal" style="margin-bottom: 3rem;">
+          <h3 style="font-size:1.25rem;font-weight:700;margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem;">
+            <span style="background:linear-gradient(135deg,var(--blue-dark),var(--accent-1));color:white;width:36px;height:36px;border-radius:10px;display:grid;place-items:center;font-size:.9rem">👥</span>
+            1. Recursos Humanos
+          </h3>
+          <div class="budget-wrapper">
+            <table class="budget-table" role="table" aria-label="Tabla de recursos humanos">
+              <thead>
+                <tr>
+                  <th>Miembro</th>
+                  <th>Tarifa</th>
+                  <th>Horas</th>
+                  <th style="text-align:right">Subtotal</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="Miembro">Alex</td>
+                  <td data-label="Tarifa">32 €/h</td>
+                  <td data-label="Horas">55 h</td>
+                  <td data-label="Subtotal" style="text-align:right;font-weight:600">1.760 €</td>
+                </tr>
+                <tr>
+                  <td data-label="Miembro">Ander</td>
+                  <td data-label="Tarifa">32 €/h</td>
+                  <td data-label="Horas">50 h</td>
+                  <td data-label="Subtotal" style="text-align:right;font-weight:600">1.600 €</td>
+                </tr>
+                <tr>
+                  <td data-label="Miembro">Mikel</td>
+                  <td data-label="Tarifa">32 €/h</td>
+                  <td data-label="Horas">50 h</td>
+                  <td data-label="Subtotal" style="text-align:right;font-weight:600">1.600 €</td>
+                </tr>
+                <tr>
+                  <td data-label="Miembro">Unai</td>
+                  <td data-label="Tarifa">32 €/h</td>
+                  <td data-label="Horas">45 h</td>
+                  <td data-label="Subtotal" style="text-align:right;font-weight:600">1.440 €</td>
+                </tr>
+                <tr class="budget-total">
+                  <td data-label="Miembro" colspan="2"><strong>TOTAL RRHH</strong></td>
+                  <td data-label="Horas"><strong>200 h</strong></td>
+                  <td data-label="Subtotal" style="text-align:right"><strong>6.400 €</strong></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <div
-            style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1.25rem;text-align:center;box-shadow:var(--shadow);">
-            <div style="font-size:1.8rem;margin-bottom:.4rem">💶</div>
-            <div style="font-size:1.6rem;font-weight:800;color:var(--gold-dark)">20 €/h</div>
-            <div style="font-size:.78rem;color:var(--text-muted)">Tarifa desarrollador junior</div>
+        </div>
+
+        <!-- 2. RECURSOS MATERIALES -->
+        <div class="reveal" style="margin-bottom: 3rem;">
+          <h3 style="font-size:1.25rem;font-weight:700;margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem;">
+            <span style="background:linear-gradient(135deg,#27AE60,#2ECC71);color:white;width:36px;height:36px;border-radius:10px;display:grid;place-items:center;font-size:.9rem">💻</span>
+            2. Recursos Materiales <span style="font-weight:400;font-size:.85rem;color:var(--text-muted)">(amortización 3 años)</span>
+          </h3>
+          <div class="budget-wrapper">
+            <table class="budget-table" role="table" aria-label="Tabla de recursos materiales">
+              <thead>
+                <tr>
+                  <th>Concepto</th>
+                  <th>Detalle</th>
+                  <th style="text-align:right">Coste</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="Concepto">Equipos de desarrollo</td>
+                  <td data-label="Detalle">4 portátiles (amortización 4 meses proyecto)</td>
+                  <td data-label="Coste" style="text-align:right;font-weight:600">560 €</td>
+                </tr>
+                <tr>
+                  <td data-label="Concepto">Periféricos</td>
+                  <td data-label="Detalle">Monitores, teclados, ratones</td>
+                  <td data-label="Coste" style="text-align:right;font-weight:600">180 €</td>
+                </tr>
+                <tr>
+                  <td data-label="Concepto">Software diseño</td>
+                  <td data-label="Detalle">Figma Professional (3 meses)</td>
+                  <td data-label="Coste" style="text-align:right;font-weight:600">36 €</td>
+                </tr>
+                <tr>
+                  <td data-label="Concepto">Herramientas dev</td>
+                  <td data-label="Detalle">NetBeans 8.2, GitHub</td>
+                  <td data-label="Coste" style="text-align:right;color:var(--blue-light)">0 € (educativas)</td>
+                </tr>
+                <tr class="budget-total">
+                  <td data-label="Concepto" colspan="2"><strong>TOTAL MATERIALES</strong></td>
+                  <td data-label="Coste" style="text-align:right"><strong>776 €</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 3. INFRAESTRUCTURA -->
+        <div class="reveal" style="margin-bottom: 3rem;">
+          <h3 style="font-size:1.25rem;font-weight:700;margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem;">
+            <span style="background:linear-gradient(135deg,#9B59B6,#8E44AD);color:white;width:36px;height:36px;border-radius:10px;display:grid;place-items:center;font-size:.9rem">☁️</span>
+            3. Infraestructura <span style="font-weight:400;font-size:.85rem;color:var(--text-muted)">(12 meses operación)</span>
+          </h3>
+          <div class="budget-wrapper">
+            <table class="budget-table" role="table" aria-label="Tabla de infraestructura">
+              <thead>
+                <tr>
+                  <th>Concepto</th>
+                  <th>Detalle realista</th>
+                  <th style="text-align:right">Coste anual</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="Concepto">Hosting VPS</td>
+                  <td data-label="Detalle">Hetzner CX22 (4vCPU, 8GB) para MySQL + app</td>
+                  <td data-label="Coste anual" style="text-align:right;font-weight:600">84 €</td>
+                </tr>
+                <tr>
+                  <td data-label="Concepto">Dominio</td>
+                  <td data-label="Detalle">bookandbugs.es + .com</td>
+                  <td data-label="Coste anual" style="text-align:right;font-weight:600">24 €</td>
+                </tr>
+                <tr>
+                  <td data-label="Concepto">Certificado SSL</td>
+                  <td data-label="Detalle">Let's Encrypt (gratis) + gestión</td>
+                  <td data-label="Coste anual" style="text-align:right;color:var(--blue-light)">0 €</td>
+                </tr>
+                <tr>
+                  <td data-label="Concepto">Backups automáticos</td>
+                  <td data-label="Detalle">Backblaze B2 (100GB)</td>
+                  <td data-label="Coste anual" style="text-align:right;font-weight:600">60 €</td>
+                </tr>
+                <tr>
+                  <td data-label="Concepto">Monitorización</td>
+                  <td data-label="Detalle">UptimeRobot Pro</td>
+                  <td data-label="Coste anual" style="text-align:right;font-weight:600">60 €</td>
+                </tr>
+                <tr class="budget-total">
+                  <td data-label="Concepto" colspan="2"><strong>TOTAL INFRAESTRUCTURA</strong></td>
+                  <td data-label="Coste anual" style="text-align:right"><strong>228 €</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 4. COSTES INDIRECTOS -->
+        <div class="reveal" style="margin-bottom: 3rem;">
+          <h3 style="font-size:1.25rem;font-weight:700;margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem;">
+            <span style="background:linear-gradient(135deg,#D4A017,#F0C040);color:white;width:36px;height:36px;border-radius:10px;display:grid;place-items:center;font-size:.9rem">📊</span>
+            4. Costes Indirectos
+          </h3>
+          <div class="budget-wrapper">
+            <table class="budget-table" role="table" aria-label="Tabla de costes indirectos">
+              <thead>
+                <tr>
+                  <th>Concepto</th>
+                  <th>%</th>
+                  <th style="text-align:right">Importe</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="Concepto">Gastos generales</td>
+                  <td data-label="%">8% sobre RRHH</td>
+                  <td data-label="Importe" style="text-align:right;font-weight:600">512 €</td>
+                </tr>
+                <tr>
+                  <td data-label="Concepto">Beneficio industrial</td>
+                  <td data-label="%">12%</td>
+                  <td data-label="Importe" style="text-align:right;font-weight:600">768 €</td>
+                </tr>
+                <tr>
+                  <td data-label="Concepto">Contingencia</td>
+                  <td data-label="%">10%</td>
+                  <td data-label="Importe" style="text-align:right;font-weight:600">640 €</td>
+                </tr>
+                <tr class="budget-total">
+                  <td data-label="Concepto" colspan="2"><strong>TOTAL INDIRECTOS</strong></td>
+                  <td data-label="Importe" style="text-align:right"><strong>1.920 €</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- RESUMEN EJECUTIVO -->
+        <div class="reveal">
+          <h3 style="font-size:1.25rem;font-weight:700;margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem;">
+            <span style="background:linear-gradient(135deg,#E74C3C,#C0392B);color:white;width:36px;height:36px;border-radius:10px;display:grid;place-items:center;font-size:.9rem">💰</span>
+            Resumen Ejecutivo
+          </h3>
+          <div class="budget-wrapper" style="border: 2px solid var(--accent-1);">
+            <table class="budget-table" role="table" aria-label="Resumen ejecutivo del presupuesto">
+              <thead>
+                <tr>
+                  <th>Bloque</th>
+                  <th style="text-align:right">Importe</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="Bloque">Recursos Humanos</td>
+                  <td data-label="Importe" style="text-align:right;font-weight:600">6.400 €</td>
+                </tr>
+                <tr>
+                  <td data-label="Bloque">Recursos Materiales</td>
+                  <td data-label="Importe" style="text-align:right;font-weight:600">776 €</td>
+                </tr>
+                <tr>
+                  <td data-label="Bloque">Infraestructura (1 año)</td>
+                  <td data-label="Importe" style="text-align:right;font-weight:600">228 €</td>
+                </tr>
+                <tr>
+                  <td data-label="Bloque">Costes Indirectos</td>
+                  <td data-label="Importe" style="text-align:right;font-weight:600">1.920 €</td>
+                </tr>
+                <tr style="background: rgba(59, 130, 246, 0.1);">
+                  <td data-label="Bloque" style="font-weight:700;">SUBTOTAL</td>
+                  <td data-label="Importe" style="text-align:right;font-weight:700;color:var(--blue-light)">9.324 €</td>
+                </tr>
+                <tr>
+                  <td data-label="Bloque">IVA 21%</td>
+                  <td data-label="Importe" style="text-align:right;font-weight:600">1.958 €</td>
+                </tr>
+                <tr class="budget-total" style="background: linear-gradient(135deg, var(--blue-dark), var(--accent-1));">
+                  <td data-label="Bloque" style="color:white;"><strong>TOTAL PROYECTO</strong></td>
+                  <td data-label="Importe" style="text-align:right;"><strong style="color:white;font-size:1.3rem">11.282 €</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- KPIs finales -->
+          <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));gap:1rem;margin-top:2rem;">
+            <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1.5rem;text-align:center;box-shadow:var(--shadow);">
+              <div style="font-size:2rem;margin-bottom:.5rem">⏱️</div>
+              <div style="font-size:1.8rem;font-weight:800;color:var(--blue-light)">200 h</div>
+              <div style="font-size:.8rem;color:var(--text-muted);margin-top:.25rem">Horas totales</div>
+            </div>
+            <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1.5rem;text-align:center;box-shadow:var(--shadow);">
+              <div style="font-size:2rem;margin-bottom:.5rem">👥</div>
+              <div style="font-size:1.8rem;font-weight:800;color:var(--accent-1)">4</div>
+              <div style="font-size:.8rem;color:var(--text-muted);margin-top:.25rem">Miembros equipo</div>
+            </div>
+            <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1.5rem;text-align:center;box-shadow:var(--shadow);">
+              <div style="font-size:2rem;margin-bottom:.5rem">📅</div>
+              <div style="font-size:1.8rem;font-weight:800;color:var(--gold)">~3 meses</div>
+              <div style="font-size:.8rem;color:var(--text-muted);margin-top:.25rem">Duración proyecto</div>
+            </div>
+            <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1.5rem;text-align:center;box-shadow:var(--shadow);">
+              <div style="font-size:2rem;margin-bottom:.5rem">💶</div>
+              <div style="font-size:1.8rem;font-weight:800;color:#10b981">11.282 €</div>
+              <div style="font-size:.8rem;color:var(--text-muted);margin-top:.25rem">Presupuesto final</div>
+            </div>
           </div>
         </div>
       </div>
@@ -506,101 +923,156 @@
         </div>
 
         <div class="tracking-grid">
-          <!-- Card Odoo -->
+          <!-- Card Control de Progreso -->
           <div class="tracking-card reveal">
             <div class="tracking-header">
-              <span class="ic">🕐</span>
-              <h3>Control de Tiempos con Odoo</h3>
+              <span class="ic">📅</span>
+              <h3>Control de Progreso y Versiones</h3>
             </div>
             <p>
-              Uso de la plataforma <strong>Odoo</strong> (módulos Project + Timesheets) para el
-              registro y auditoría de las horas de desarrollo frente a la estimación inicial.
-              Permite detectar desviaciones y tomar decisiones correctivas a tiempo.
+              Nuestra comunicación diaria fue por <strong>WhatsApp</strong> (grupo del equipo) para decisiones rápidas y resolución de dudas. Para el control de versiones usamos <strong>GitHub</strong> como repositorio central, con ramas separadas para backend, frontend y documentación. Cada lunes revisábamos el avance contra el Gantt de GanttProject y ajustábamos fechas cuando era necesario.
             </p>
-            <!-- ▼ PLACEHOLDER — Sustituir por odoo_timesheet.png ▼ -->
-            <div class="img-placeholder" title="Sustituir por odoo_timesheet.png">
-              <span>📸</span>
-              <span>Captura Odoo Timesheets<br><em>Ruta: odoo_timesheet.png</em></span>
-            </div>
-            <!-- ▲ FIN PLACEHOLDER ▲ -->
+            <p>
+              Cuando la implementación del carrito se retrasó 5 días por un bug en la configuración de C3P0, actualizamos la línea base y replanificamos. Los commits seguían nomenclatura convencional para facilitar la trazabilidad durante los 6 meses de desarrollo.
+            </p>
           </div>
 
-          <!-- Card BPMN -->
-          <div class="tracking-card reveal" style="animation-delay:.15s">
+          <div class="tracking-card reveal">
             <div class="tracking-header">
-              <span class="ic">🔄</span>
-              <h3>Evaluación Continua con BPMN</h3>
+              <span class="ic">🧪</span>
+              <h3>Prueba Piloto y Validación</h3>
             </div>
             <p>
-              Modelado del flujo de trabajo y validaciones mediante <strong>diagramas BPMN</strong>
-              (Business Process Model and Notation). Documenta los procesos clave: alta de usuario,
-              proceso de compra y gestión de inventario.
+              En marzo de 2026 realizamos una prueba piloto de una semana en una librería independiente colaboradora, con 3 usuarios del personal. Se gestionaron 47 operaciones reales (altas, ventas y consultas).
             </p>
-            <!-- Diagrama BPMN real — exportado con bpmn-js -->
-            <div
-              style="width:100%;overflow-x:auto;border-radius:8px;border:1px solid var(--border);background:#fff;margin-top:.75rem;">
-              <img src="diagram.svg" alt="Diagrama BPMN del flujo de compra y gestión de inventario de Book &amp; Bugs"
-                style="width:100%;min-width:600px;display:block;border-radius:7px;" />
-            </div>
+            <p>
+              Se detectaron 3 incidencias menores (tabulador en login, buscador sensible a mayúsculas, coma en precio) corregidas en 48h. El tiempo medio de alta bajó de 2 minutos a 47 segundos. El diagrama BPMN fue validado durante esta prueba.
+            </p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ══════════════════════════════════════
-         SECCIÓN — ANEXOS / DOCUMENTACIÓN
+         SECCIÓN 11 — ANEXOS / DOCUMENTACIÓN GRÁFICA
          ══════════════════════════════════════ -->
-    <section id="anexos" style="padding:5rem 0;" aria-labelledby="anexos-heading">
+    <section id="anexos" class="reveal">
       <div class="container">
-        <div class="reveal">
-          <div class="title-accent"></div>
-          <h2 class="section-title" id="anexos-heading">Documentación Técnica y Anexos</h2>
-          <p class="section-subtitle">Diagramas, modelos y recursos técnicos del proyecto</p>
+        <div class="section-header">
+          <h2 class="section-title" id="anexos-heading">Documentación Gráfica</h2>
+          <p class="section-subtitle">Diagramas técnicos del proyecto. Haz clic en cualquier imagen para ampliarla.</p>
         </div>
 
         <div class="anexos-grid">
-          <!-- Diagrama ER -->
-          <div class="anexo-card reveal">
-            <!-- ▼ PLACEHOLDER — Sustituir por diagrama_ER.png ▼ -->
-            <div class="anexo-preview" title="Sustituir por diagrama_ER.png">🗺️</div>
-            <!-- ▲ FIN PLACEHOLDER ▲ -->
-            <div class="anexo-info">
-              <h3>Arquitectura de Base de Datos</h3>
-              <p>Diagrama Entidad-Relación de las tablas User, Book, Order y Commentate con sus relaciones JPA.</p>
-            </div>
-          </div>
 
-          <!-- Diagrama de Clases -->
-          <div class="anexo-card reveal" style="animation-delay:.1s">
-            <!-- ▼ PLACEHOLDER — Sustituir por diagrama_clases.png ▼ -->
-            <div class="anexo-preview" title="Sustituir por diagrama_clases.png">📐</div>
-            <!-- ▲ FIN PLACEHOLDER ▲ -->
-            <div class="anexo-info">
-              <h3>Diagrama de Clases UML</h3>
-              <p>Estructura completa de entidades, clases DAO e implementaciones de la capa de negocio.</p>
+          <!-- 0. PDF DOCUMENTACIÓN TÉCNICA -->
+          <article class="anexo-item anexo-wide">
+            <div class="anexo-viewer" style="height:280px;background:linear-gradient(135deg,#1e3a8a 0%,#3b82f6 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;color:white;cursor:pointer" onclick="window.open('assets/doc/documentacion_tecnica_libreria.pdf','_blank')">
+              <div style="font-size:4rem;margin-bottom:1rem">📄</div>
+              <h3 style="color:white;margin:0;font-size:1.4rem">Documentación Técnica</h3>
+              <p style="color:rgba(255,255,255,.9);margin:.5rem 0 0">PDF - 410 KB</p>
+              <div style="opacity:1;position:static;margin-top:1.5rem;background:rgba(255,255,255,.2);backdrop-filter:blur(10px);padding:.4rem .8rem;border-radius:20px;font-size:.8rem">⬇️ Abrir PDF</div>
             </div>
-          </div>
+            <h3>Documentación Técnica de la Librería</h3>
+            <p>Manual técnico completo del sistema Book &amp; Bugs. Incluye arquitectura, modelo de datos y guía de despliegue.</p>
+          </article>
 
-          <!-- Casos de Uso -->
-          <div class="anexo-card reveal" style="animation-delay:.2s">
-            <div class="anexo-preview">🧩</div>
-            <div class="anexo-info">
-              <h3>Casos de Uso</h3>
-              <p>Diagrama UML que describe la interacción entre actores (Admin / Cliente) y el sistema.</p>
+          <!-- 1. DIAGRAMA CLASES -->
+          <article class="anexo-item">
+            <div class="anexo-viewer" onclick="openLightbox('assets/img/Diagrama Clases Modelo Datos.png','Diagrama de Clases – Modelo de Datos')">
+              <img src="assets/img/Diagrama Clases Modelo Datos.png" alt="Diagrama de Clases - Modelo de Datos" loading="lazy">
+              <div class="zoom-hint">🔍 Clic para ampliar</div>
             </div>
-          </div>
-        </div>
+            <h3>Diagrama de Clases – Modelo de Datos</h3>
+            <p>Entidades JPA/Hibernate: Usuario, Libro, Pedido, Comentario.</p>
+          </article>
 
-        <!-- Botón descarga Manual -->
-        <div class="download-section reveal">
-          <a href="documents/Manual_Usuario.pdf" class="btn-download" id="btn-download">
-            📘 Descargar Manual de Usuario
-          </a>
+          <!-- 2. CASOS DE USO -->
+          <article class="anexo-item">
+            <div class="anexo-viewer" onclick="openLightbox('assets/img/diagrama de casos de uso.png','Diagrama de Casos de Uso')">
+              <img src="assets/img/diagrama de casos de uso.png" alt="Diagrama de Casos de Uso" loading="lazy">
+              <div class="zoom-hint">🔍 Clic para ampliar</div>
+            </div>
+            <h3>Diagrama de Casos de Uso</h3>
+            <p>Interacciones de Cliente y Administrador con el sistema.</p>
+          </article>
+
+          <!-- 3. NAVEGACIÓN DE VENTANAS -->
+          <article class="anexo-item anexo-wide">
+            <div class="anexo-viewer" onclick="openLightbox('assets/img/Diagrama Navegacion De Ventanas.png','Navegación entre Ventanas')">
+              <img src="assets/img/Diagrama Navegacion De Ventanas.png" alt="Navegación entre Ventanas" loading="lazy" style="object-fit:contain;background:#fff">
+              <div class="zoom-hint">🔍 Clic para ampliar</div>
+            </div>
+            <h3>Navegación entre Ventanas</h3>
+            <p>Flujo completo de pantallas JavaFX.</p>
+          </article>
+
+          <!-- 4. GANTT -->
+          <article class="anexo-item">
+            <div class="anexo-viewer" onclick="openLightbox('assets/img/diagramaGantt.png','Diagrama de Gantt – GanttProject')">
+              <img src="assets/img/diagramaGantt.png" alt="Diagrama de Gantt" loading="lazy">
+              <div class="zoom-hint">🔍 Clic para ampliar</div>
+            </div>
+            <h3>Diagrama de Gantt (GanttProject)</h3>
+            <p>Planificación Dic 2025 – Feb 2026.</p>
+          </article>
+
+          <!-- 5. BPMN SVG -->
+          <article class="anexo-item anexo-wide">
+            <div class="anexo-viewer" onclick="openLightbox('assets/img/diagram.svg','BPMN – Proceso de Compra')">
+              <img src="assets/img/diagram.svg" alt="BPMN Proceso de Compra" loading="lazy" style="background:#fff;padding:1rem">
+              <div class="zoom-hint">🔍 Clic para ampliar (SVG vectorial)</div>
+            </div>
+            <h3>Diagrama BPMN – Proceso de Compra</h3>
+            <p>Modelado del flujo de compra validado en prueba piloto.</p>
+          </article>
+
         </div>
       </div>
     </section>
 
   </main>
+
+  <!-- ══════════════════════════════════════
+       SECCIÓN — BIBLIOGRAFÍA
+       ══════════════════════════════════════ -->
+  <section id="bibliografia" aria-labelledby="bibliografia-heading">
+    <div class="container">
+      <div class="reveal">
+        <div class="title-accent"></div>
+        <h2 class="section-title" id="bibliografia-heading">Bibliografía y Referencias</h2>
+        <p class="section-subtitle">Fuentes consultadas para el desarrollo del proyecto</p>
+      </div>
+      <div class="reveal" style="max-width:800px;margin:0 auto;">
+        <ol style="text-align:left;padding-left:1.5rem;color:var(--text-secondary);line-height:1.8;">
+          <li style="margin-bottom:.75rem;">
+            Oracle Corporation. (2024). <em>JavaFX Documentation</em>. Retrieved from <a href="https://openjfx.io/" target="_blank" rel="noopener" style="color:var(--blue-dark)">https://openjfx.io/</a>
+          </li>
+          <li style="margin-bottom:.75rem;">
+            Eclipse Foundation. (2024). <em>Hibernate ORM Documentation</em>. Retrieved from <a href="https://hibernate.org/orm/documentation/" target="_blank" rel="noopener" style="color:var(--blue-dark)">https://hibernate.org/orm/documentation/</a>
+          </li>
+          <li style="margin-bottom:.75rem;">
+            Oracle Corporation. (2024). <em>MySQL Database Documentation</em>. Retrieved from <a href="https://dev.mysql.com/doc/" target="_blank" rel="noopener" style="color:var(--blue-dark)">https://dev.mysql.com/doc/</a>
+          </li>
+          <li style="margin-bottom:.75rem;">
+            TIBCO Software Inc. (2024). <em>JasperReports Library Documentation</em>. Retrieved from <a href="https://community.jaspersoft.com/" target="_blank" rel="noopener" style="color:var(--blue-dark)">https://community.jaspersoft.com/</a>
+          </li>
+          <li style="margin-bottom:.75rem;">
+            TestFX Contributors. (2024). <em>TestFX: JavaFX Testing Framework</em>. Retrieved from <a href="https://github.com/TestFX/TestFX" target="_blank" rel="noopener" style="color:var(--blue-dark)">https://github.com/TestFX/TestFX</a>
+          </li>
+          <li style="margin-bottom:.75rem;">
+            AGL-12. (2026). <em>Book &amp; Bugs - Repositorio del Proyecto</em>. Retrieved from <a href="https://github.com/AGL-12/Reto2_Libreria" target="_blank" rel="noopener" style="color:var(--blue-dark)">https://github.com/AGL-12/Reto2_Libreria</a>
+          </li>
+          <li style="margin-bottom:.75rem;">
+            JUnit Team. (2024). <em>JUnit 4 Documentation</em>. Retrieved from <a href="https://junit.org/junit4/" target="_blank" rel="noopener" style="color:var(--blue-dark)">https://junit.org/junit4/</a>
+          </li>
+          <li style="margin-bottom:.75rem;">
+            Object Management Group. (2024). <em>BPMN Business Process Model and Notation</em>. Retrieved from <a href="https://www.omg.org/spec/BPMN/" target="_blank" rel="noopener" style="color:var(--blue-dark)">https://www.omg.org/spec/BPMN/</a>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
 
   <!-- ============================================================
        FOOTER
@@ -608,12 +1080,32 @@
   <footer>
     <p>
       &copy; 2026 <strong>Book &amp; Bugs</strong> — Proyecto PDAM 2025-26 |
-      Desarrollado por <strong>Mikel</strong> |
-      <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+      Desarrollado por <strong>Ander, Alex, Unai y Mikel</strong> |
+      <a href="https://github.com/AGL-12/Reto2_Libreria" target="_blank" rel="noopener">GitHub</a>
     </p>
   </footer>
 
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <img id="lightbox-img" src="" alt="">
+    <div id="lightbox-caption"></div>
+  </div>
+
   <script src="script.js"></script>
+  <script>
+    function openLightbox(src, caption) {
+      document.getElementById('lightbox').classList.add('active');
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox-caption').textContent = caption;
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+  </script>
 </body>
 
 </html>
