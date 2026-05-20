@@ -493,24 +493,26 @@ Aplicación de escritorio JavaFX con Hibernate 5.2, MySQL y pruebas
           <p style="font-size:.78rem;color:var(--text-muted);margin-bottom:1.25rem;font-weight:600;">
             🗓️ Vista detallada interactiva — Escala diciembre 2025 → febrero 2026
           </p>
-          <table class="gantt-table" role="table" aria-label="Diagrama de Gantt interactivo">
-            <thead>
-              <tr class="gantt-header">
-                <th class="task-col">Tarea</th>
-                <!-- Diciembre 2025: semanas S1-S5 (9–26) -->
-                <th class="month-col" colspan="12" style="text-align:center">Diciembre 2025</th>
-                <!-- Vacaciones Navidad -->
-                <th class="month-col" colspan="3" style="text-align:center;color:#aaa">Nav.</th>
-                <!-- Enero 2026 -->
-                <th class="month-col" colspan="22" style="text-align:center">Enero 2026</th>
-                <!-- Febrero 2026 -->
-                <th class="month-col" colspan="23" style="text-align:center">Febrero 2026</th>
-              </tr>
-            </thead>
-            <tbody id="gantt-body">
-              <!-- Filas generadas por script.js -->
-            </tbody>
-          </table>
+          <div class="gantt-scroll" role="region" aria-label="Scroll horizontal del diagrama de Gantt">
+            <table class="gantt-table" role="table" aria-label="Diagrama de Gantt interactivo">
+              <thead>
+                <tr class="gantt-header">
+                  <th class="task-col">Tarea</th>
+                  <!-- Diciembre 2025: semanas S1-S5 (9–26) -->
+                  <th class="month-col" colspan="12" style="text-align:center">Diciembre 2025</th>
+                  <!-- Vacaciones Navidad -->
+                  <th class="month-col" colspan="3" style="text-align:center;color:#aaa">Nav.</th>
+                  <!-- Enero 2026 -->
+                  <th class="month-col" colspan="22" style="text-align:center">Enero 2026</th>
+                  <!-- Febrero 2026 -->
+                  <th class="month-col" colspan="23" style="text-align:center">Febrero 2026</th>
+                </tr>
+              </thead>
+              <tbody id="gantt-body">
+                <!-- Filas generadas por script.js -->
+              </tbody>
+            </table>
+          </div>
         </div>
 
         <!-- Leyenda -->

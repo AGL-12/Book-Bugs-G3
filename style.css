@@ -1032,9 +1032,15 @@ main {
   border-radius: var(--radius);
   padding: 3rem;
   box-shadow: var(--shadow);
-  overflow-x: auto;
+  overflow: hidden;
   margin-top: 3rem;
   backdrop-filter: blur(10px);
+}
+
+.gantt-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 .gantt-table {
@@ -1067,6 +1073,8 @@ main {
   left: 0;
   background: var(--bg-card);
   z-index: 5;
+  border-right: 1px solid var(--border);
+  box-shadow: 10px 0 18px -18px rgba(0, 0, 0, 0.85);
 }
 
 .gantt-header th.month-col {
@@ -1103,6 +1111,8 @@ main {
   left: 0;
   background: var(--bg-card);
   z-index: 4;
+  border-right: 1px solid var(--border);
+  box-shadow: 10px 0 18px -18px rgba(0, 0, 0, 0.85);
 }
 
 /* Bar cell */
@@ -1547,7 +1557,42 @@ footer a:hover {
   }
 
   .gantt-wrapper {
-    padding: 1.5rem;
+    padding: 0.75rem;
+  }
+
+  .gantt-scroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-gutter: stable;
+  }
+
+  .gantt-table {
+    min-width: 600px;
+  }
+
+  .gantt-header th.task-col {
+    min-width: 140px;
+    font-size: .8rem;
+    padding-left: .75rem;
+  }
+
+  .gantt-row td.task-name {
+    font-size: .82rem;
+    padding-left: .75rem;
+    min-width: 140px;
+  }
+
+  .gantt-header th {
+    font-size: .65rem;
+    padding: .6rem .15rem;
+  }
+
+  .gantt-row td {
+    padding: .6rem .1rem;
+  }
+
+  .gantt-bar {
+    height: 14px;
   }
 
   #introduccion::before {
