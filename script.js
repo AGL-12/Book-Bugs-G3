@@ -524,6 +524,13 @@ document.addEventListener('click', (e) => {
 
 const TOTAL_COLS = 60;
 
+const monthSlices = [
+  { key: 'dic', label: 'Dic', start: 1, end: 12 },
+  { key: 'nav', label: 'Nav', start: 13, end: 15 },
+  { key: 'ene', label: 'Ene', start: 16, end: 37 },
+  { key: 'feb', label: 'Feb', start: 38, end: 60 },
+];
+
 // Definición de columnas del encabezado secundario (vacío, sólo para rellenar)
 // El encabezado de meses ya está en HTML, aquí sólo generamos las filas de datos.
 
@@ -669,8 +676,66 @@ function buildGantt() {
   });
 }
 
+function taskTypeLabel(type) {
+  if (type === 'critical') return 'Fase critica';
+  if (type === 'test') return 'Pruebas';
+  if (type === 'vacation') return 'Vacaciones';
+  return 'Fase normal';
+}
+
+function monthFromCol(col) {
+  const slice = monthSlices.find((m) => col >= m.start && col <= m.end);
+  if (!slice) return 'Fuera de rango';
+  if (slice.key === 'dic') return 'Diciembre 2025';
+  if (slice.key === 'nav') return 'Navidad';
+  if (slice.key === 'ene') return 'Enero 2026';
+  return 'Febrero 2026';
+}
+
+function buildGanttMobile() {
+  const host = document.getElementById('gantt-mobile-body');
+  if (!host) return;
+
+  host.innerHTML = '';
+
+  tasks.forEach((task) => {
+    const left = ((task.start - 1) / TOTAL_COLS) * 100;
+    const width = (task.span / TOTAL_COLS) * 100;
+
+    const item = document.createElement('details');
+    item.className = 'gantt-mobile-card';
+
+    const summary = document.createElement('summary');
+    summary.className = 'gantt-mobile-summary';
+    summary.innerHTML = `
+      <span class="gantt-mobile-name">${task.name}</span>
+      <span class="gantt-mobile-badge badge-${task.type}">${taskTypeLabel(task.type)}</span>
+    `;
+
+    const body = document.createElement('div');
+    body.className = 'gantt-mobile-content';
+    body.innerHTML = `
+      <div class="gantt-mobile-meta">
+        <span>Inicio: ${monthFromCol(task.start)}</span>
+        <span>Duracion: ${task.span} bloques</span>
+      </div>
+      <div class="gantt-mobile-track" aria-hidden="true">
+        <span class="gantt-mobile-fill fill-${task.type}" style="left:${left}%;width:${width}%;"></span>
+      </div>
+      <div class="gantt-mobile-months">
+        <span>Dic</span><span>Nav</span><span>Ene</span><span>Feb</span>
+      </div>
+    `;
+
+    item.appendChild(summary);
+    item.appendChild(body);
+    host.appendChild(item);
+  });
+}
+
 // Ejecutar al cargar
 buildGantt();
+buildGanttMobile();
 
 /* ──────────────────────────────────────────────────────────
    6. SMOOTH SCROLL para enlaces internos
