@@ -388,12 +388,15 @@ body.scrolled header {
   top: var(--header-h);
   left: 0;
   right: 0;
+  bottom: 0;
   background: rgba(9, 9, 11, 0.95);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
   padding: 1rem 2rem 1.5rem;
   z-index: 998;
   box-shadow: var(--shadow);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .mobile-menu.open {
@@ -481,41 +484,20 @@ main {
   padding: var(--space-xl) 2rem;
 }
 
-/* Hero Logo Background Layer */
-.hero-logo-bg {
-  position: absolute;
-  top: 50%;
-  right: 5%;
-  transform: translateY(-50%);
-  max-width: 450px;
-  width: 40vw;
-  height: auto;
-  max-height: 42vh;
-  /* Restricted height */
-  object-fit: contain;
-  z-index: 1;
-  /* Medium level */
-  opacity: 0.85;
-  /* Increased opacity behind text */
-  pointer-events: none;
-}
-
-/* Radial Gradient behind logo to pop it */
+/* Logo decorativo de fondo. No existe en el layout HTML. */
 #introduccion::before {
   content: '';
   position: absolute;
-  top: 50%;
-  right: 10%;
-  width: 60vw;
-  height: 60vw;
-  max-width: 800px;
-  max-height: 800px;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.25) 0%, transparent 60%);
+  top: 48%;
+  right: 5%;
+  width: min(560px, 40vw);
+  height: min(560px, 40vw);
+  background: url("assets/img/Book&Bugs_Logo.png") center / contain no-repeat;
   transform: translateY(-50%);
-  border-radius: 50%;
+  opacity: 0.85;
+  filter: drop-shadow(0 0 42px rgba(59, 130, 246, 0.22));
   pointer-events: none;
   z-index: 0;
-  /* Deepest level */
 }
 
 #introduccion::after {
@@ -755,6 +737,11 @@ main {
 .team-card {
   padding: 3rem 2rem;
   text-align: center;
+  margin-top: 1.5rem;
+}
+
+.team-grid .team-card {
+  margin-top: 0;
 }
 
 .avatar {
@@ -1480,6 +1467,19 @@ footer a:hover {
     grid-template-columns: 1fr;
     gap: 4rem;
     text-align: center;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+  }
+
+  #introduccion::before {
+    top: 35%;
+    left: 50%;
+    right: auto;
+    width: min(45vw, 180px);
+    height: min(45vw, 180px);
+    transform: translate(-50%, -50%);
+    opacity: 0.08;
   }
 
   .hero-desc {
@@ -1506,18 +1506,34 @@ footer a:hover {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
+  #introduccion {
+    min-height: auto;
+    padding: 3rem 1rem 4rem;
+    align-items: flex-start;
+  }
+
+  .hero-inner {
+    width: 100%;
+    gap: 2rem;
+  }
+
   .section-title {
     font-size: 2.2rem;
   }
 
   .hero-title {
-    font-size: 3.2rem;
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
+
+  .hero-desc {
+    font-size: 1rem;
+    max-width: 100%;
   }
 
   .hero-btns {
     flex-direction: column;
     width: 100%;
-    max-width: 320px;
+    max-width: 100%;
     margin: 0 auto;
   }
 
@@ -1534,21 +1550,10 @@ footer a:hover {
     padding: 1.5rem;
   }
 
-  /* Hero reorganizado en móvil */
-  .hero-inner {
-    padding-top: 15vh;
-  }
-
-  .hero-logo-bg {
-    display: block;
-    position: relative;
-    top: auto;
-    right: auto;
-    transform: none;
-    margin: 0 auto 2rem;
-    width: 60vw;
-    opacity: 1;
-    /* full visibility top */
+  #introduccion::before {
+    top: 32%;
+    width: min(44vw, 160px);
+    height: min(44vw, 160px);
   }
 
   /* Performance GPU */
@@ -1608,17 +1613,6 @@ footer a:hover {
     align-items: center;
     gap: 1rem;
   }
-}
-
-/* 2. HERO — límite real anti-tapa-texto */
-.hero-logo-bg,
-.hero .hero-bg img {
-  max-height: 38vh !important;
-  width: min(560px, 65vw) !important;
-  height: auto !important;
-  object-fit: contain !important;
-  top: 48% !important;
-  opacity: 0.85 !important;
 }
 
 /* 3. PERFORMANCE MÓVIL — mata lag */

@@ -414,10 +414,18 @@ const revealObserver = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.15 }
+  { threshold: 0.05, rootMargin: '0px 0px 30px 0px' }
 );
 
-document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+document.querySelectorAll('.reveal').forEach((el) => {
+  // Fallback inmediato: si ya está visible, marca sin esperar al observer
+  const rect = el.getBoundingClientRect();
+  if (rect.top < window.innerHeight && rect.bottom > 0) {
+    el.classList.add('visible');
+  } else {
+    revealObserver.observe(el);
+  }
+});
 
 /* ──────────────────────────────────────────────────────────
    2. ACTIVE NAV LINK (highlight on scroll)
