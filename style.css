@@ -199,15 +199,12 @@ body.scrolled header {
   overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;
-  padding: 0 40px; /* Space for fades */
+  padding: 0 10px;
   list-style: none;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none; /* Firefox */
   flex: 1;
-  /* Visual Fade mask to indicate more items */
-  mask-image: linear-gradient(to right, transparent 0%, black 40px, black calc(100% - 40px), transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 40px, black calc(100% - 40px), transparent 100%);
 }
 
 .nav-links::-webkit-scrollbar {
@@ -218,7 +215,7 @@ body.scrolled header {
   font-size: 0.82rem;
   font-weight: 500;
   color: var(--text-muted);
-  padding: 0.5rem 0.6rem;
+  padding: 0.5rem 0.4rem;
   border-radius: 0; /* Flat bottom for underline */
   position: relative;
   transition: var(--transition);
@@ -1345,7 +1342,7 @@ main {
 
 .tracking-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 2.5rem;
   margin-top: 3rem;
 }
