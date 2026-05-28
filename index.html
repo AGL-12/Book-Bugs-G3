@@ -40,6 +40,7 @@
         <li><a href="#introduccion" class="nav-link active">Introducción</a></li>
         <li><a href="#origen" class="nav-link">Origen</a></li>
         <li><a href="#objetivo-general" class="nav-link">Objetivo General</a></li>
+        <li><a href="#objetivos-especificos" class="nav-link">Obj. Específicos</a></li>
         <li><a href="#tareas" class="nav-link">Tareas</a></li>
         <li><a href="#recursos-humanos" class="nav-link">RRHH</a></li>
         <li><a href="#recursos-materiales" class="nav-link">RRMM</a></li>
@@ -74,6 +75,7 @@
     <a href="#nosotros" class="mob-link">Nosotros</a>
     <a href="#origen" class="mob-link">Origen</a>
     <a href="#objetivo-general" class="mob-link">Objetivos</a>
+    <a href="#objetivos-especificos" class="mob-link">Obj. Específicos</a>
     <a href="#tareas" class="mob-link">Tareas</a>
     <a href="#cronograma" class="mob-link">Planificación</a>
     <a href="#recursos-humanos" class="mob-link">Recursos Humanos</a>
@@ -109,7 +111,7 @@ Aplicación de escritorio JavaFX con Hibernate 5.2, MySQL y pruebas
              automatizadas con TestFX &amp; JUnit.
           </p>
           <div class="hero-btns">
-            <a href="#contexto" class="btn-primary">📖 Explorar Proyecto</a>
+            <a href="https://github.com/AGL-12/Reto2_Libreria" target="_blank" rel="noopener" class="btn-primary">📖 Explorar Proyecto</a>
             <a href="#cronograma" class="btn-secondary">📅 Ver Planificación</a>
           </div>
         </div>
@@ -313,6 +315,61 @@ Aplicación de escritorio JavaFX con Hibernate 5.2, MySQL y pruebas
     </section>
 
     
+
+    <!-- ══════════════════════════════════════
+         SECCIÓN — OBJETIVOS ESPECÍFICOS
+         ══════════════════════════════════════ -->
+    <section id="objetivos-especificos" aria-labelledby="objetivos-especificos-heading">
+      <div class="container">
+        <div class="reveal">
+          <div class="title-accent"></div>
+          <h2 class="section-title" id="objetivos-especificos-heading">Objetivos Específicos</h2>
+          <p class="section-subtitle">Funcionalidades principales de la aplicación</p>
+        </div>
+
+        <div class="tracking-grid">
+          <div class="tracking-card reveal">
+            <div class="tracking-header">
+              <span class="ic">💻</span>
+              <h3>Descripción general</h3>
+            </div>
+            <p>
+              La aplicación tiene tres tipos de usuario: visitante, cliente y administrador. Todos pueden ver el catálogo de libros. El cliente puede comprar y comentar. El administrador gestiona el sistema sin comprar ni comentar.
+            </p>
+          </div>
+
+          <div class="tracking-card reveal">
+            <div class="tracking-header">
+              <span class="ic">👁️</span>
+              <h3>Visitante</h3>
+            </div>
+            <p>
+              Puede navegar por el catálogo de libros sin necesidad de iniciar sesión.
+            </p>
+          </div>
+
+          <div class="tracking-card reveal">
+            <div class="tracking-header">
+              <span class="ic">👤</span>
+              <h3>Cliente</h3>
+            </div>
+            <p>
+              Al iniciar sesión, puede comprar libros, consultar su historial de pedidos y dejar valoraciones con estrellas. Cada cliente tiene un carrito de compras por sesión.
+            </p>
+          </div>
+
+          <div class="tracking-card reveal">
+            <div class="tracking-header">
+              <span class="ic">⚙️</span>
+              <h3>Administrador</h3>
+            </div>
+            <p>
+              No compra ni comenta. Su función es gestionar los libros y los usuarios del sistema, con validaciones y control de errores.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- ══════════════════════════════════════
          SECCIÓN — TAREAS
@@ -920,35 +977,34 @@ Aplicación de escritorio JavaFX con Hibernate 5.2, MySQL y pruebas
       <div class="container">
         <div class="reveal">
           <div class="title-accent"></div>
-          <h2 class="section-title" id="seguimiento-heading">Seguimiento y Evaluación</h2>
-          <p class="section-subtitle">Metodología de control de calidad y auditoría del proyecto</p>
+          <h2 class="section-title" id="seguimiento-heading">Seguimiento</h2>
+          <p class="section-subtitle">Metodología de control y organización del proyecto</p>
         </div>
 
         <div class="tracking-grid">
-          <!-- Card Control de Progreso -->
           <div class="tracking-card reveal">
             <div class="tracking-header">
               <span class="ic">📅</span>
-              <h3>Control de Progreso y Versiones</h3>
+              <h3>Organización y herramientas</h3>
             </div>
             <p>
-              Nuestra comunicación diaria fue por <strong>WhatsApp</strong> (grupo del equipo) para decisiones rápidas y resolución de dudas. Para el control de versiones usamos <strong>GitHub</strong> como repositorio central, con ramas separadas para backend, frontend y documentación. Cada lunes revisábamos el avance contra el Gantt de GanttProject y ajustábamos fechas cuando era necesario.
+              A la hora de llevar a cabo un proyecto en equipo, es indispensable contar con una buena organización que permita avanzar de forma eficiente. Para ello, utilizamos <strong>GitHub</strong> como sistema de control de versiones, empleando una estrategia de ramas para separar el desarrollo de backend, frontend y documentación.
             </p>
             <p>
-              Cuando la implementación del carrito se retrasó 5 días por un bug en la configuración de C3P0, actualizamos la línea base y replanificamos. Los commits seguían nomenclatura convencional para facilitar la trazabilidad durante los 6 meses de desarrollo.
+              La comunicación diaria se mantuvo mediante un grupo de WhatsApp, mientras que las reuniones semanales servían para revisar el avance respecto al cronograma definido en <strong>GanttProject</strong> y replanificar en caso de ser necesario.
             </p>
           </div>
 
           <div class="tracking-card reveal">
             <div class="tracking-header">
               <span class="ic">🧪</span>
-              <h3>Prueba Piloto y Validación</h3>
+              <h3>Evaluación y pruebas</h3>
             </div>
             <p>
-              En marzo de 2026 realizamos una prueba piloto de una semana en una librería independiente colaboradora, con 3 usuarios del personal. Se gestionaron 47 operaciones reales (altas, ventas y consultas).
+              La evaluación del software consiste en verificar que el producto cumple con los requisitos establecidos. Para ello, se diseñaron pruebas unitarias con <strong>JUnit</strong> para la lógica de negocio y pruebas de interfaz con <strong>TestFX</strong> para validar el funcionamiento de las pantallas principales.
             </p>
             <p>
-              Se detectaron 3 incidencias menores (tabulador en login, buscador sensible a mayúsculas, coma en precio) corregidas en 48h. El tiempo medio de alta bajó de 2 minutos a 47 segundos. El diagrama BPMN fue validado durante esta prueba.
+              Se probó la aplicación con usuarios de prueba para validar el comportamiento en un uso real. Las incidencias detectadas fueron corregidas antes de la entrega final del proyecto.
             </p>
           </div>
         </div>
